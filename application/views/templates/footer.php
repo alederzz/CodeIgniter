@@ -52,6 +52,7 @@
         <script src="<?php echo base_url();?>vendors/flot/jquery.flot.min.js"></script>
         <script src="<?php echo base_url();?>vendors/flot/jquery.flot.resize.min.js"></script>
         <script src="<?php echo base_url();?>vendors/flot/plugins/curvedLines.js"></script>
+        <script src="<?php echo base_url();?>vendors/input-mask/input-mask.min.js"></script>
         <script src="<?php echo base_url();?>vendors/sparklines/jquery.sparkline.min.js"></script>
         <script src="<?php echo base_url();?>vendors/easypiechart/jquery.easypiechart.min.js"></script>
         
