@@ -361,7 +361,7 @@
                 
                                 <ul>
                                     <li><a href="form-elements.html">Productos</a></li>
-                                    <li><a href="form-components.html">Ingresar STOCK</a></li>
+                                    <li><?php echo anchor('inventario/agregar_producto/','Ingresar Producto'); ?></li>
                                 </ul>
                             </li>
                             <li class="sub-menu">

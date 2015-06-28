@@ -47,7 +47,7 @@
                     </label>
                 </div>
                 
-                <a href="" class="btn btn-login btn-danger btn-float"><i class="md md-arrow-forward"></i></a>
+                <button type="submit" class="btn btn-login btn-danger btn-float"><i class="md md-arrow-forward"></i></button>
                 
                 <ul class="login-navigation">
                     <li data-block="#l-register" class="bgm-red">Registrate</li>
