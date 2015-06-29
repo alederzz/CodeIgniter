@@ -3,7 +3,7 @@
 	
 	<div class="row">
 		<!-- Agregar clientes -->
-		<?php echo $this->session->flashdata('msje_datos_guardados'); ?>
+		<?php echo $this->session->flashdata('mensaje'); ?>
 		<div class="card col-md-6">
 			<div class="card-header">
 				<h2>Agregar Nuevo Producto</h2>
@@ -17,7 +17,7 @@
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="md md-description"></i></span>
 								<div class="fg-line">
-									<input id="inputCodigoProducto" type="text" name="codigo_producto" class="form-control input-sm" required>
+									<input id="inputCodigoProducto" placeholder="0003004021" type="text" maxlength="10" name="codigo_producto" class="form-control input-sm" required>
 								</div>
 							</div>
 						</div>
@@ -26,14 +26,14 @@
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="md md-attach-money"></i></span>
 								<div class="fg-line">
-									<input id="inputPrecio" data-mask="000-00-0000000" type="number" name="precio" class="form-control input-sm" required>
+									<input id="inputPrecio" placeholder="150.00" data-mask="000 000.00" data-mask-reverse="true" type="text" name="precio" class="form-control input-sm input-mask" required>
 								</div>
 							</div>
 						</div>
 						<div class="col-md-4">
 							<label for="inputCantidad">Cantidad</label>
 							<div class="input-group form-group">
-								<span class="input-group-addon"><i class="md md-today"></i></span>
+								<span class="input-group-addon"><i class="md md-my-library-add"></i></span>
 								<div class="fg-line">
 									<input id="inputCantidad" type="number" name="cantidad" class="form-control input-sm" required>
 								</div>

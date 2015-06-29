@@ -339,29 +339,31 @@
                         </div>
                         
                         <ul class="main-menu">
-                            <li class="active"><a href="<?php echo base_url()?>"><i class="md md-home"></i> Dashboard</a></li>
+                            <li>
+                                <a href="<?php echo base_url()?>"><i class="md md-home"></i> Dashboard</a>
+                            </li>
                             <li class="sub-menu">
                                 <a href=""><i class="md md-assignment"></i> Facturas</a>
 
                                 <ul>
                                     <li><a href="widgets.html">Documentos</a></li>
-                                    <li><?php echo anchor('facturar/','Crear Factura'); ?></li>
+                                    <li><?php echo anchor('facturar','Crear Factura'); ?></li>
                                 </ul>
                             </li>
                             <li class="sub-menu">
                                 <a href=""><i class="md md-group"></i> Clientes</a>
                 
                                 <ul>
-                                    <li><?php echo anchor('clientes/','Clientes'); ?></li>
-                                    <li><?php echo anchor('clientes/agregar/','Ingresar Cliente'); ?></li>
+                                    <li><?php echo anchor('clientes','Clientes'); ?></li>
+                                    <li><?php echo anchor('clientes/agregar','Ingresar Cliente'); ?></li>
                                 </ul>
                             </li>
                             <li class="sub-menu">
                                 <a href=""><i class="md md-my-library-books"></i> Inventario</a>
                 
                                 <ul>
-                                    <li><a href="form-elements.html">Productos</a></li>
-                                    <li><?php echo anchor('inventario/agregar_producto/','Ingresar Producto'); ?></li>
+                                    <li><?php echo anchor('inventario','Productos'); ?></li>
+                                    <li><?php echo anchor('inventario/agregar_producto','Ingresar Producto'); ?></li>
                                 </ul>
                             </li>
                             <li class="sub-menu">

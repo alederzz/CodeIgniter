@@ -1,14 +1,37 @@
 $(document).on('ready',function(){
+
+	//Agrega las clases ACTIVE al Menu
+	var enlaceActivo = $(".main-menu li a").hasClass('active');
+	var pgurl = window.location.href;
+	$(".main-menu li a").each(function(){
+		if($(this).attr("href") == pgurl ){
+			$(this).parent().parent().parent().addClass("active")
+			$(this).addClass("active");
+		}
+	})
+	//./ Agrega las clases ACTIVE al Menu
 	
+
 	//Checkbox Producto personalizado
 	$('.act_custom').click(function(){
-		$('input[name="prod_custom"]').removeAttr("value");
-		$('input[name="producto"]').attr("type","hidden");
-		$('input[name="prod_custom"]').attr("type","text");
-		$('input[name="producto"]').attr("value","0");
+
+		//Si el checkbox ya esta activo
+		if($(this).attr('checked') == "checked"){
+
+			//bloquea los campos de cantidad y precio
+			$("#inputCantidad, #inputPrecio").attr('disabled',"");
+
+		}else{
+
+			//Si el checkbox no esta activo
+			//Desbloque los campos de cantida y precio
+			$("#inputCantidad, #inputPrecio").removeAttr('disabled');
+			$(this).attr('checked', 'checked');
+
+		}
 
 	});
-
+	//./ Checkbox Producto personalizado
 
 
 	var cambios = function (){

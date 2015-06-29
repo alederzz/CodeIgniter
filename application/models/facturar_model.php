@@ -24,13 +24,14 @@ class Facturar_model extends CI_Model{
 	}
 
 	//Graba los datos de faturacion en la Base de Datos
-	public function grabar_factura($codigounico, $cliente, $fecha, $serie, $correlativo, $precio_total){
+	public function grabar_factura($codigounico, $cliente, $fecha, $moneda, $serie, $correlativo, $precio_total){
 		$datos = array(
 			'id_factura'	=> $codigounico,
 			'id_cliente' => $cliente,
 			'fecha' => $fecha,
 			'serie' => $serie,
 			'correlativo' => $correlativo,
+			'moneda' => $moneda,
 			'monto' => $precio_total
 			 );
 
@@ -38,11 +39,10 @@ class Facturar_model extends CI_Model{
 
 	}
 
-	public function grabar_producto($codigounico, $producto, $prod_custom, $cantidad, $precio){
+	public function grabar_producto($codigounico, $producto, $cantidad, $precio){
 		$datos = array(
 			'id_facturacion'=> $codigounico,
 			'id_producto'	=> $producto,
-			'prod_custom'	=> $prod_custom,
 			'cantidad'		=> $cantidad,
 			'precio'		=> $cantidad*$precio,
 			'precio_unit'	=> $precio

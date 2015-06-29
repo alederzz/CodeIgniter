@@ -3,7 +3,7 @@
 	<div class="row">
 		<form action="<?php echo base_url();?>facturar/guardar_datos_factura" method="post">
 			<div class="block-header">
-				<h2>asfsa</h2>
+				<h2>Crear Nuevo Documento</h2>
 			</div>
 			<div class="card">
 				<div class="card-header">
@@ -22,7 +22,7 @@
 								</div>
 								<div class="col-md-9 col-xs-9">
 									<div class="fg-line">
-										<input id="inputCorrelativo" type="number" name="correlativo" class="form-control input-sm">
+										<input id="inputCorrelativo" type="number" name="correlativo" class="form-control input-sm" required>
 									</div>
 								</div>
 							</div>
@@ -37,16 +37,18 @@
 							</div>
 						</div>
 						<div class="col-md-3 col-xd-12">
-							<label for="">Moneda</label>
+							<label for="inputMoneda">Moneda</label>
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="md md-attach-money"></i></span>
-								<div class="fg-line ">
-									<input id="" type="text" name="moneda" class="form-control input-sm">
+								<div class="fg-line select">
+									<select id="inputMoneda" type="text" name="moneda" class="form-control input-sm" required>
+										<option value="soles" selected>Soles</option>
+										<option value="dolares">Dólares</option>
+									</select>
 								</div>
 							</div>
 						</div>
 					</div>
-					<button class="btn btn-primary waves-effect waves-button waves-float">Enviar</button>
 				</div>
 			</div>
 			<div class="card">
@@ -60,7 +62,7 @@
 							<div class=" input-group form-group">
 								<span class="input-group-addon"><i class="md md-person"></i></span>
 								<div class="fg-line">
-									<input id="inputCliente" type="text" name="cliente" class="form-control input-sm">
+									<input id="inputCliente" type="text" name="cliente" class="form-control input-sm" required>
 									<input type="hidden" name="idcliente">
 								</div>
 							</div>
@@ -98,20 +100,19 @@
 								<div class="col-md-5">
 									<div class="form-group fg-line">
 										<label class="sr-only" for="">Producto</label>
-										<input type="text" name="producto" class="form-control input-sm" placeholder="Producto">
-										<input type="hidden" name="prod_custom" class="form-control input-sm" placeholder="Producto Personalizado" value="0">
+										<input type="text" name="producto" class="form-control input-sm" placeholder="Producto" required>
 									</div>
 								</div>
 								<div class="col-md-2">
 									<div class="form-group fg-line">
-										<label class="sr-only" for="">Cantidad</label>
-										<input type="text" name="cantidad" class="form-control input-sm" placeholder="Ingrese la cantidad">
+										<label class="sr-only" for="inputCantidad">Cantidad</label>
+										<input type="text" id="inputCantidad" name="cantidad" class="form-control input-sm" placeholder="Ingrese la cantidad" disabled>
 									</div>
 								</div>
 								<div class="col-md-2">
 									<div class="form-group fg-line">
-										<label class="sr-only" for="">Precio</label>
-										<input type="text" name="precio" class="form-control input-sm" placeholder="Precio">
+										<label class="sr-only" for="inputPrecio">Precio</label>
+										<input type="text" id="inputPrecio" name="precio" class="form-control input-sm" placeholder="Precio" disabled>
 									</div>
 								</div>
 								<div class="col-md-2">
@@ -123,9 +124,9 @@
 								</div>
 								<div id="botones" class="form-group col-md-1">
 									<label class="sr-only" for="">Agregar otro Producto</label>
-									<button id="add-producto" class="btn btn-primary waves-effect waves-button waves-float"><i class="md md-add"></i></button>
+									<button id="add-producto" class="btn btn-primary"><i class="md md-add"></i></button>
 									<label class="sr-only" for="">Eliminar Producto</label>
-									<button id="delete-producto" class="btn btn-primary waves-effect waves-button waves-float" disabled><i class="md md-remove"></i></button>
+									<button id="delete-producto" class="btn btn-primary" disabled><i class="md md-remove"></i></button>
 								</div>
 							</div>
 						</div>
@@ -148,6 +149,7 @@
 							</div>
 						</div>
 					</div>
+					<button class="btn btn-success waves-effect waves-button waves-float">Crear Documento</button>
 				</div>
 			</div>
 		</form>
