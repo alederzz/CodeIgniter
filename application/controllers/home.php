@@ -11,6 +11,8 @@ class Home extends CI_Controller {
 		if (!$this->session->userdata('login')):
 			$this->load->view('login',$datos);
 		else:
+			$segmentos_totales=$this->uri->total_segments();
+			$datos['segmentos']=$segmentos_totales;
 			$datos['titulo']='Bienvenido al Escritorio';
 			$this->load->view('templates/header',$datos);
 			$this->load->view('dashboard');
