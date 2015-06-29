@@ -4,6 +4,7 @@ class Clientes extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('Clientes_model');
+		$this->load->library('breadcrumbs');
 	}
 
 	public function index(){
@@ -11,6 +12,17 @@ class Clientes extends CI_Controller {
 			$this->session->set_flashdata('mensaje','Debes Iniciar Sesion');
 			redirect(base_url());
 		else:
+
+			// agregar breadcrumbs
+			$this->breadcrumbs->push('Dashboard', '/');
+			$this->breadcrumbs->push('Lista de Clientes', '/clientes');
+
+			// salida
+			$datos['bread']=$this->breadcrumbs->show();
+
+			$segmentos_totales=$this->uri->total_segments();
+			$datos['segmentos']=$segmentos_totales;
+
 			$datos['clientes'] = $this->Clientes_model->leer_clientes();
 			$datos['titulo'] = 'Lista de Clientes';
 			$this->load->view('templates/header',$datos);
@@ -25,6 +37,10 @@ class Clientes extends CI_Controller {
 			$this->session->set_flashdata('mensaje','Debes Iniciar Sesion');
 			redirect(base_url());
 		else:
+			//Metodo para identificar el total de Segmentos
+			$segmentos_totales=$this->uri->total_segments();
+			$datos['segmentos']=$segmentos_totales;
+
 			$datos['titulo'] = 'Agregar Clientes';
 			$this->load->view('templates/header',$datos);
 			$this->load->view('clientes/agregar');
