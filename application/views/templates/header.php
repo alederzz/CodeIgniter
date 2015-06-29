@@ -297,13 +297,12 @@
                 <i id="top-search-close">&times;</i>
             </div>
         </header>
-        <!-- breadcrumb -->
 
-        <ol class="breadcrumb" style="margin-bottom: 5px;">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Library</a></li>
-            <li class="active">Data</li>
-        </ol>
+        <!-- breadcrumb -->
+        <?php if($segmentos > 0):
+            echo $bread; ?>
+        <?php endif; ?>
+        <!-- ./ breadcrumb -->
 
         <section id="main">
             <aside id="sidebar">
