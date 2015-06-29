@@ -9,8 +9,11 @@
 |	http://codeigniter.com/user_guide/general/hooks.html
 |
 */
-
-
-
+$hook['post_controller_constructor'] = array(
+                                'class'    => 'Ver',
+                                'function' => 'check_login',
+                                'filename' => 'Ver.php',
+                                'filepath' => 'hooks'
+                                );
 /* End of file hooks.php */
 /* Location: ./application/config/hooks.php */

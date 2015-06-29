@@ -21,19 +21,20 @@
         <!-- Login -->
          
             <div class="lc-block toggled" id="l-login">
-                <form action="<?php echo base_url('')?>home/login" id="loginform" class="form-horizontal" role="form" method="post">
+                <div id="status"></div>
+                <form id="loginform" class="form-horizontal" role="form">
                 <?php echo $this->session->flashdata('mensaje'); ?>
                 <div class="input-group m-b-20">
                     <span class="input-group-addon"><i class="md md-person"></i></span>
                     <div class="fg-line">
-                        <input type="text" class="form-control" name="user" placeholder="Nombre de Usuario">
+                        <input id="inputUser" type="text" class="form-control" name="user" placeholder="Nombre de Usuario">
                     </div>
                 </div>
                 
                 <div class="input-group m-b-20">
                     <span class="input-group-addon"><i class="md md-accessibility"></i></span>
                     <div class="fg-line">
-                        <input type="password" class="form-control" name="password" placeholder="Contraseña">
+                        <input id="inputPassword" type="password" class="form-control" name="password" placeholder="Contraseña">
                     </div>
                 </div>
                 
@@ -47,7 +48,7 @@
                     </label>
                 </div>
                 
-                <button type="submit" class="btn btn-login btn-danger btn-float"><i class="md md-arrow-forward"></i></button>
+                <a class="btn btn-login btn-danger btn-float" href=""><i class="md md-arrow-forward"></i></a>
                 
                 <ul class="login-navigation">
                     <li data-block="#l-register" class="bgm-red">Registrate</li>

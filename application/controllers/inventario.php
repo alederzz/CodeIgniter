@@ -18,6 +18,17 @@ class Inventario extends CI_Controller {
 			$this->session->set_flashdata('mensaje','Debes Iniciar Sesion');
 			redirect(base_url());
 		else:
+		// agregar breadcrumbs
+		$this->breadcrumbs->push('Dashboard', '/');
+		$this->breadcrumbs->push('Productos', '/inventario');
+
+		// salida
+		$datos['bread']=$this->breadcrumbs->show();
+
+		$segmentos_totales=$this->uri->total_segments();
+		$datos['segmentos']=$segmentos_totales;
+		// ./ agregar breadcrumbs
+
 		$datos['titulo']= "Inventario";//Titulo de la página
 		$datos['consulta']=$this->Inventario_model->leer_inventario();//carga los datos de la consulta SQL
 
@@ -33,6 +44,17 @@ class Inventario extends CI_Controller {
 			$this->session->set_flashdata('mensaje','Debes Iniciar Sesion');
 			redirect(base_url());
 		else:
+			// agregar breadcrumbs
+			$this->breadcrumbs->push('Dashboard', '/');
+			$this->breadcrumbs->push('Productos', '/inventario');
+			$this->breadcrumbs->push('Agregar Producto', '/inventario/agregar_producto');
+
+			// salida
+			$datos['bread']=$this->breadcrumbs->show();
+
+			$segmentos_totales=$this->uri->total_segments();
+			$datos['segmentos']=$segmentos_totales;
+			// ./ agregar breadcrumbs
 
 			$datos['titulo']="Agregar Nuevo Producto";
 			$this->load->view('templates/header',$datos);

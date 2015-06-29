@@ -12,14 +12,10 @@ class Usuarios_model extends CI_Model {
 
 		if ($consulta->num_rows > 0) {
 			$consulta = $consulta->row();
-			$this->session->set_userdata('login',$consulta->usuario);
-			redirect(base_url());
+			$this->session->set_userdata('login',$consulta->usuario);//Crea la Session
+			echo "TRUE";
 		}else{
-			$mensaje1 ='
-			<div class="alert alert-danger">El usuario y la contraseña son incorrectos</div>
-			';
-			$this->session->set_flashdata('mensaje', $mensaje1);
-			redirect(base_url());
+			echo "FALSE";
 		}
 	}
 }

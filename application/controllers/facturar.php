@@ -11,6 +11,17 @@ class Facturar extends CI_Controller {
 			$this->session->set_flashdata('mensaje','Debes Iniciar Sesion');
 			redirect(base_url());
 		else:
+			// agregar breadcrumbs
+			$this->breadcrumbs->push('Dashboard', '/');
+			$this->breadcrumbs->push('Documentos', '/documentos');
+			$this->breadcrumbs->push('Agregar Factura', '/facturar');
+
+			// salida
+			$datos['bread']=$this->breadcrumbs->show();
+
+			$segmentos_totales=$this->uri->total_segments();
+			$datos['segmentos']=$segmentos_totales;
+
 			$datos['titulo']= "Facturar";
 			$this->load->view('templates/header',$datos);
 			$this->load->view('factura/crear_factura');
