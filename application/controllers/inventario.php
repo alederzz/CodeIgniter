@@ -55,7 +55,7 @@ class Inventario extends CI_Controller {
 						&& isset($cantidad) && !empty($cantidad) && isset($precio) && !empty($precio) ){
 
 						$this->Inventario_model->agregar_producto($sku, $nombre_producto, $cantidad, $precio);
-						$this->session->set_flashdata('msje_datos_guardados', 'Los Datos se han guardado');
+						$this->session->set_flashdata('mensaje', 'Los Datos se han guardado');
 					}
 			}
 
