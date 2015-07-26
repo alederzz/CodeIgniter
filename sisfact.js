@@ -1,5 +1,38 @@
 $(document).on('ready',function(){
 
+
+	//Welcome Message (not for login page)
+	function notify(message, type){
+	    $.growl({
+	        message: message
+	    },{
+	        type: type,
+	        allow_dismiss: false,
+	        label: 'Cancel',
+	        className: 'btn-xs btn-inverse',
+	        placement: {
+	            from: 'top',
+	            align: 'right'
+	        },
+	        delay: 2500,
+	        animate: {
+	                enter: 'animated bounceIn',
+	                exit: 'animated bounceOut'
+	        },
+	        offset: {
+	            x: 20,
+	            y: 85
+	        }
+	    });
+	};
+	
+	if (!$('.login-content')[0]) {
+	    notify('Welcome back Mallinda Hollaway', 'inverse');
+	} 
+
+	//./ Welcome Message (not for login page)
+
+
 	//Agrega las clases ACTIVE al Menu
 	var enlaceActivo = $(".main-menu li a").hasClass('active');
 	var pgurl = window.location.href;
@@ -33,6 +66,18 @@ $(document).on('ready',function(){
 	});
 	//./ Checkbox Producto personalizado
 
+
+	//  Autocompletar campos
+	$("#inputCliente").devbridgeAutocomplete({
+		serviceUrl: '/CodeIgniter/clientes/leer_clientes',
+		onSelect: function (suggestion) {
+		        alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
+		},
+		showNoSuggestionNotice: true,
+		noSuggestionNotice: 'No se encontraron datos'
+	});
+
+	//./ Autocompletar campos
 
 	var cambios = function (){
 		//$(".producto-container > div:nth-child(1)").attr("class","producto-row-0");
@@ -86,49 +131,6 @@ $(document).on('ready',function(){
 	    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
 	        e.preventDefault(); $(this).parent('div').remove(); x--;
 	    })*/
-
-
-	//Enviar Formulario
-	$(".btn-login").click(function(e){
-		e.preventDefault();
-		var usuario=$("#inputUser").val();
-		var password=$("#inputPassword").val();
-
-		        var parametros = {
-		                "user" : usuario,
-		                "password" : password
-		        };
-		        $.ajax({
-		                data:  parametros,
-		                url:   'ajax/login',
-		                type:  'post',
-		                beforeSend: function () {
-		                        $("#status").html('<div class="alert alert-info"><i class="md md-spin md-rotate-right"></i> Comprobando Datos..</div>');
-		                },
-		                success:  function (response) {
-		                        if(response === "TRUE"){
-		                        	function exito(){
-		                        	$("#status").html('<div class="alert alert-success"><i class="md md-check"></i> Estas Logueado</div>');
-		                    		}
-		                        	window.setTimeout(exito,600);
-		                        	function redireccion(){
-		                        		location.reload();
-		                        	}
-		                        	window.setTimeout(redireccion,1200);
-		                        }else{
-		                        	if(response === "FALSE"){
-		                        		function error(){
-		                        			$("#status").html('<div class="alert alert-danger">El usuario y la contraseña son incorrectos</div>');
-		                        		}
-		                        		window.setTimeout(error,600);
-		                        	}
-		                        }
-		                }
-		        });
-
-
-		//$("#loginform").submit();
-	});
 
 
 	//Command Buttons

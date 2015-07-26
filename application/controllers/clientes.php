@@ -12,17 +12,19 @@ class Clientes extends CI_Controller {
 			redirect(base_url());
 		else:
 
+
 			// agregar breadcrumbs
 			$this->breadcrumbs->push('Dashboard', '/');
 			$this->breadcrumbs->push('Lista de Clientes', '/clientes');
+			$datos['bread']=$this->breadcrumbs->show();// salida
+			//./ agregar breadcrumbs
 
-			// salida
-			$datos['bread']=$this->breadcrumbs->show();
 
 			$segmentos_totales=$this->uri->total_segments();
-			$datos['segmentos']=$segmentos_totales;
 
-			$datos['clientes'] = $this->Clientes_model->leer_clientes();
+
+			$datos['segmentos']=$segmentos_totales;
+			$datos['clientes'] = $this->Clientes_model->listar_clientes();
 			$datos['titulo'] = 'Lista de Clientes';
 			$this->load->view('templates/header',$datos);
 			$this->load->view('clientes/clientes', $datos);
@@ -30,6 +32,54 @@ class Clientes extends CI_Controller {
 		endif;
 
 	}
+
+
+
+	public function leer_clientes(){
+		if (!$this->session->userdata('login')):
+			$this->session->set_flashdata('mensaje','Debes Iniciar Sesion');
+			redirect(base_url());
+		else:
+			header('Content-Type: application/json');
+			$clientes = array(); //creamos un array
+			 
+			$data=$this->Clientes_model->listar_clientes();
+			foreach($data as $columna) 
+			{ 
+			   $persona=$columna->tipo_persona;
+			   $documento=$columna->nro_documento;
+			   $razon=$columna->razon_social;
+			   $direccion=$columna->direccion;
+			   $email=$columna->email;
+			   $telefono=$columna->telefono;
+			   $tienda=$columna->tienda;
+			    
+			 
+			    $clientes[] = array('tipo_persona'=> $persona, 'nro_documento'=> $documento, 'value'=> $razon, 'direccion'=> $direccion,
+			                        'email'=> $email, 'telefono'=> $telefono, 'tienda'=> $tienda);
+			 
+			}
+
+			$array = array("query" => "Unit", "suggestions" => $clientes);
+			echo json_encode($array);
+		endif;
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	public function agregar(){
 		if (!$this->session->userdata('login')):

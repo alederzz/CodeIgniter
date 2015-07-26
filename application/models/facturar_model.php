@@ -41,7 +41,7 @@ class Facturar_model extends CI_Model{
 
 	public function grabar_producto($codigounico, $producto, $cantidad, $precio){
 		$datos = array(
-			'id_facturacion'=> $codigounico,
+			'id_factura'=> $codigounico,
 			'id_producto'	=> $producto,
 			'cantidad'		=> $cantidad,
 			'precio'		=> $cantidad*$precio,

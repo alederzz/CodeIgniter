@@ -46,9 +46,9 @@
         <!-- Javascript Libraries -->
         <script src="<?php echo base_url();?>js/jquery-2.1.1.min.js"></script>
         <script src="<?php echo base_url();?>js/bootstrap.min.js"></script>
-        <script src="<?php echo base_url();?>sisfact.js"></script>
         
         <script src="<?php echo base_url();?>vendors/bootgrid/jquery.bootgrid.min.js"></script>
+        <script src="<?php echo base_url();?>vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
         <script src="<?php echo base_url();?>vendors/flot/jquery.flot.min.js"></script>
         <script src="<?php echo base_url();?>vendors/flot/jquery.flot.resize.min.js"></script>
         <script src="<?php echo base_url();?>vendors/flot/plugins/curvedLines.js"></script>
@@ -63,8 +63,8 @@
         <script src="<?php echo base_url();?>vendors/nicescroll/jquery.nicescroll.min.js"></script>
         <script src="<?php echo base_url();?>vendors/waves/waves.min.js"></script>
         <script src="<?php echo base_url();?>vendors/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
-        <script src="<?php echo base_url();?>vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
-        <script src="<?php echo base_url();?>vendors/sweet-alert/sweet-alert.min.js"></script>
+        <script src="<?php echo base_url();?>vendors/autocomplete/jquery.autocomplete.js"></script>
+        <script src="<?php echo base_url();?>vendors/autocomplete/jquery.mockjax.js"></script>
         
         <script src="<?php echo base_url();?>js/flot-charts/curved-line-chart.js"></script>
         <script src="<?php echo base_url();?>js/flot-charts/line-chart.js"></script>
@@ -72,8 +72,7 @@
         
         <script src="<?php echo base_url();?>js/charts.js"></script>
         <script src="<?php echo base_url();?>js/functions.js"></script>
-        <script src="<?php echo base_url();?>js/demo.js"></script>
-
+        <script src="<?php echo base_url();?>sisfact.js"></script>
         
     </body>
 </html>
