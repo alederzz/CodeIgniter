@@ -5,8 +5,33 @@ class Facturar extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Facturar_model');
 	}
-	// Pagina de Inventario
+
+	//Pagina Muestra Facturas Realizadas
 	public function index(){
+
+		if (!$this->session->userdata('login')):
+			$this->session->set_flashdata('mensaje','Debes Iniciar Sesion');
+			redirect(base_url());
+		else:
+			// agregar breadcrumbs
+			$this->breadcrumbs->push('Dashboard', '/');
+			$this->breadcrumbs->push('Documentos', '/documentos');
+			$datos['bread']=$this->breadcrumbs->show();// salida
+
+
+			$segmentos_totales=$this->uri->total_segments();
+
+			$datos['segmentos']=$segmentos_totales;
+			$datos['titulo'] = "Documentos Creados";
+			$datos['documentos'] = $this->Facturar_model->listar_documentos();
+			$this->load->view('templates/header', $datos);
+			$this->load->view('factura/documentos');
+			$this->load->view('templates/footer');
+		endif;
+	}
+
+	// Pagina de Facturación
+	public function crear(){
 		if (!$this->session->userdata('login')):
 			$this->session->set_flashdata('mensaje','Debes Iniciar Sesion');
 			redirect(base_url());
@@ -21,7 +46,7 @@ class Facturar extends CI_Controller {
 			$segmentos_totales=$this->uri->total_segments();
 
 			$datos['segmentos']=$segmentos_totales;
-			$datos['titulo']= "Facturar";
+			$datos['titulo']= "Crear Documento";
 			$this->load->view('templates/header',$datos);
 			$this->load->view('factura/crear_factura');
 			$this->load->view('templates/footer');
@@ -37,7 +62,7 @@ class Facturar extends CI_Controller {
 		$correlativo=$this->security->xss_clean(strip_tags($this->input->post('correlativo')));
 		$fecha=$this->security->xss_clean(strip_tags($this->input->post('fecha')));
 		$moneda=$this->security->xss_clean(strip_tags($this->input->post('moneda')));
-		$cliente=$this->security->xss_clean(strip_tags($this->input->post('cliente')));
+		$cliente=$this->security->xss_clean(strip_tags($this->input->post('idcliente')));
 		$precio_total=$this->security->xss_clean(strip_tags($this->input->post('total')));
 		$direccion=$this->security->xss_clean(strip_tags($this->input->post('direccion')));
 		$ruc=$this->security->xss_clean(strip_tags($this->input->post('ruc')));

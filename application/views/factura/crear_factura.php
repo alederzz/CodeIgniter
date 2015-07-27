@@ -63,7 +63,7 @@
 								<span class="input-group-addon"><i class="md md-person"></i></span>
 								<div class="fg-line">
 									<input id="inputCliente" type="text" name="cliente" class="form-control input-sm" required>
-									<input type="hidden" name="idcliente">
+									<input type="hidden" id="inputIdCliente" name="idcliente">
 								</div>
 							</div>
 						</div>

@@ -68,13 +68,17 @@ $(document).on('ready',function(){
 
 
 	//  Autocompletar campos
+
+	//Campo de Cliente
 	$("#inputCliente").devbridgeAutocomplete({
-		serviceUrl: '/CodeIgniter/clientes/leer_clientes',
-		onSelect: function (suggestion) {
-		        alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
-		},
 		showNoSuggestionNotice: true,
-		noSuggestionNotice: 'No se encontraron datos'
+		serviceUrl: '/CodeIgniter/clientes/leer_clientes',
+		noSuggestionNotice: 'No se encontraron datos',
+		onSelect: function (suggestion) {
+			$('#inputIdCliente').val(suggestion.data)
+		   $('#inputRuc').val(suggestion.nro_documento);
+		   $('#inputDireccion').val(suggestion.direccion)
+		}
 	});
 
 	//./ Autocompletar campos
@@ -153,6 +157,31 @@ $(document).on('ready',function(){
 				return "<button type=\"button\" class=\"btn btn-icon command-edit\" data-row-id=\"" + row.ruc + "\"><span class=\"md md-edit\"></span></button> " + 
 	            "<button type=\"button\" class=\"btn btn-icon command-delete\" data-row-id=\"" + row.ruc + "\"><span class=\"md md-delete\"></span></button> " + 
 	            "<button type=\"button\" class=\"btn btn-icon command-create\" data-row-id=\"" + row.ruc + "\"><span class=\"md md-check\"></span></button>";
+	          }
+	    }
+	});
+
+	//Comandos para Tabla Documentos
+	//Command Buttons
+	$("#data-table-command-docs").bootgrid({
+		caseSensitive: false,
+		labels: {
+		        search: "Buscar",
+		        infos: "Mostrando {{ctx.start}} a {{ctx.end}} de {{ctx.total}} elementos",
+		        all: "Todos"
+		},
+		css: {
+			icon: 'md icon',
+			iconColumns: 'md-view-module',
+			iconDown: 'md-expand-more',
+			iconRefresh: 'md-refresh',
+			iconUp: 'md-expand-less'
+		},
+		formatters: {
+			"comandos": function(column, row) {
+				return "<button type=\"button\" class=\"btn btn-icon command-edit\" data-row-id=\"" + row.ruc + "\"><span class=\"md md-edit\"></span></button> " + 
+	            "<button type=\"button\" class=\"btn btn-icon command-delete\" data-row-id=\"" + row.ruc + "\"><span class=\"md md-block\"></span></button> " + 
+	            "<button type=\"button\" class=\"btn btn-icon command-create\" data-row-id=\"" + row.ruc + "\"><span class=\"md md-remove-red-eye\"></span></button>";
 	          }
 	    }
 	});

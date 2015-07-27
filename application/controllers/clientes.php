@@ -40,23 +40,24 @@ class Clientes extends CI_Controller {
 			$this->session->set_flashdata('mensaje','Debes Iniciar Sesion');
 			redirect(base_url());
 		else:
+
 			header('Content-Type: application/json');
+			$valor=$_GET['query'];  //captura la variable que pasa el autocomplete
+			$data=$this->Clientes_model->buscar_clientes($valor);
 			$clientes = array(); //creamos un array
-			 
-			$data=$this->Clientes_model->listar_clientes();
-			foreach($data as $columna) 
-			{ 
-			   $persona=$columna->tipo_persona;
-			   $documento=$columna->nro_documento;
+
+			foreach($data as $columna) { 
+				$id=$columna->id;
 			   $razon=$columna->razon_social;
+			   $documento=$columna->nro_documento;
 			   $direccion=$columna->direccion;
-			   $email=$columna->email;
-			   $telefono=$columna->telefono;
-			   $tienda=$columna->tienda;
 			    
-			 
-			    $clientes[] = array('tipo_persona'=> $persona, 'nro_documento'=> $documento, 'value'=> $razon, 'direccion'=> $direccion,
-			                        'email'=> $email, 'telefono'=> $telefono, 'tienda'=> $tienda);
+			   $clientes[] = array(
+			   	'value'=> $razon, 
+			   	'data' => $id, 
+			   	'nro_documento' => $documento, 
+			   	'direccion' => $direccion
+			   );
 			 
 			}
 

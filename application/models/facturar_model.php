@@ -4,6 +4,13 @@ class Facturar_model extends CI_Model{
 		parent::__construct();
 	}
 
+	public function listar_documentos(){
+		
+		$consulta = $this->db->get('facturacion');
+		return $consulta->result();
+
+	}
+
 	//Consulta los datos de la tabla de facturacion en la Base de Datos
 	public function consultar_factura($correlativo){
 		$this->db->select('correlativo');

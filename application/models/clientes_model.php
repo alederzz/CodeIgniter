@@ -10,6 +10,14 @@ class Clientes_model extends CI_Model {
 
 	}
 
+	public function buscar_clientes($valor){
+
+		$consulta = $this->db->like('razon_social', $valor); 
+		$consulta = $this->db->get('clientes');
+		return $consulta->result();
+
+	}
+
 	public function agregar_clientes($tipo_persona,$tipo_doc,$nro_documento,$razon_social,$direccion,$email,
 									$telefono,$celular,$representante,$localidad,$tienda){
 		
