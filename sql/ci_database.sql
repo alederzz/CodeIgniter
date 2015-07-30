@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-07-2015 a las 03:20:24
+-- Tiempo de generación: 30-07-2015 a las 05:36:25
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.5.19
 
@@ -61,21 +61,31 @@ INSERT INTO `clientes` (`id`, `tipo_persona`, `tipo_doc`, `nro_documento`, `razo
 --
 
 CREATE TABLE IF NOT EXISTS `facturacion` (
+`id` int(6) NOT NULL,
   `id_factura` int(9) unsigned zerofill NOT NULL,
   `id_cliente` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `razon_social` text COLLATE utf8_spanish_ci NOT NULL,
+  `tipo_documento` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `serie` int(3) unsigned zerofill NOT NULL,
   `correlativo` int(6) unsigned zerofill NOT NULL,
   `moneda` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `monto` text COLLATE utf8_spanish_ci NOT NULL,
-  `fecha` varchar(20) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `fecha` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `estado` int(1) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `facturacion`
 --
 
-INSERT INTO `facturacion` (`id_factura`, `id_cliente`, `serie`, `correlativo`, `moneda`, `monto`, `fecha`) VALUES
-(001000001, '1', 001, 000001, 'soles', '50.00', '26/07/2015');
+INSERT INTO `facturacion` (`id`, `id_factura`, `id_cliente`, `razon_social`, `tipo_documento`, `serie`, `correlativo`, `moneda`, `monto`, `fecha`, `estado`) VALUES
+(1, 001000013, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 001, 000013, 'soles', '20.00', '29/07/2015', 0),
+(2, 001000014, '112', 'Agencia Uando', 'Boleta', 001, 000014, 'soles', '25.00', '29/07/2015', 1),
+(3, 001000015, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Boleta', 001, 000015, 'soles', '50.00', '29/07/2015', 0),
+(4, 001000016, '110', 'Prueba Final', 'Factura', 001, 000016, 'soles', '50.00', '29/07/2015', 1),
+(5, 001000017, '113', 'ZTa Ceces Oca', 'Guía de Remision', 002, 000017, 'soles', '10', '29/07/2015', 1),
+(6, 000100004, '114', 'Xyz ozner', 'Boleta', 001, 000004, 'soles', '6.00', '15/07/2015', 0),
+(7, 000000118, '2', 'Creaciones y Diseños Pepito EIRL', 'Guía de Remisión', 001, 000018, 'soles', '10.50', '31/07/2015', 1);
 
 -- --------------------------------------------------------
 
@@ -84,19 +94,35 @@ INSERT INTO `facturacion` (`id_factura`, `id_cliente`, `serie`, `correlativo`, `
 --
 
 CREATE TABLE IF NOT EXISTS `items` (
+`id` int(6) NOT NULL,
   `id_factura` int(9) unsigned zerofill NOT NULL,
   `id_producto` int(11) unsigned zerofill NOT NULL,
   `cantidad` int(4) NOT NULL,
-  `precio_unit` text NOT NULL,
+  `precio_unit` decimal(8,2) NOT NULL,
   `precio` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `items`
 --
 
-INSERT INTO `items` (`id_factura`, `id_producto`, `cantidad`, `precio_unit`, `precio`) VALUES
-(001000001, 00000000000, 5, '1.5', '7.5');
+INSERT INTO `items` (`id`, `id_factura`, `id_producto`, `cantidad`, `precio_unit`, `precio`) VALUES
+(1, 001000013, 00000000055, 2, '4.00', '7'),
+(2, 001000014, 00000000000, 5, '2.00', '9'),
+(3, 001000015, 00000000000, 5, '1.00', '6'),
+(4, 001000011, 00000000054, 3, '3.00', '9'),
+(5, 001000010, 00000000053, 2, '5.00', '10'),
+(6, 001000016, 00000000052, 3, '3.00', '9.9'),
+(7, 001000013, 00000000057, 2, '4.80', '9.60'),
+(8, 001000013, 00000000055, 2, '5.27', '10.536'),
+(9, 001000014, 00000000051, 3, '999.99', '1369998.363'),
+(10, 001000014, 00000000010, 3, '456888.12', '1370664.36'),
+(11, 001000015, 00000000054, 5, '10.55', '52.725'),
+(12, 001000015, 00000000055, 3, '1.00', '3'),
+(13, 001000016, 00000000000, 5, '10.55', '52.75'),
+(14, 001000017, 00000000000, 2, '1.00', '2'),
+(15, 000100004, 00000000000, 5, '1.20', '6'),
+(16, 000000118, 00000000000, 7, '1.50', '10.5');
 
 -- --------------------------------------------------------
 
@@ -178,13 +204,13 @@ ALTER TABLE `clientes`
 -- Indices de la tabla `facturacion`
 --
 ALTER TABLE `facturacion`
- ADD PRIMARY KEY (`id_factura`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `items`
 --
 ALTER TABLE `items`
- ADD PRIMARY KEY (`id_factura`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `login`
@@ -213,6 +239,16 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `clientes`
 MODIFY `id` int(150) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=115;
+--
+-- AUTO_INCREMENT de la tabla `facturacion`
+--
+ALTER TABLE `facturacion`
+MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT de la tabla `items`
+--
+ALTER TABLE `items`
+MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT de la tabla `login`
 --

@@ -6,7 +6,7 @@
 				<h2>Crear Nuevo Documento</h2>
 			</div>
 			<div class="card">
-				<div class="card-header bgm-bluegray m-b-20">
+				<div class="card-header bgm-cyan m-b-20">
 					<h2>Datos de Facturación <small>Ingresa los Datos del Documento</small></h2>
 				</div>
 				<div class="card-body card-padding">
@@ -17,7 +17,8 @@
 								<span class="input-group-addon"><i class="md md-assignment"></i></span>
 								<div class="fg-line select">
 									<select id="inputTipoDoc" type="text" name="tipodoc" class="form-control input-sm" required>
-										<option value="Factura" selected>Factura</option>
+										<option value="<?php echo $valores->correlativo;?>" selected><?php echo $valores->tipo_documento;?></option>
+										<option value="Factura">Factura</option>
 										<option value="Boleta">Boleta</option>
 										<option value="Guía de Remisión">Guía de Remisión</option>
 									</select>
@@ -30,12 +31,12 @@
 								<span class="input-group-addon"><i class="md md-tab"></i></span>
 								<div class="col-md-3 col-xs-3">
 									<div class="fg-line">
-										<input id="inputSerie" type="text" name="serie" class="form-control input-sm" value="001">
+										<input id="inputSerie" type="text" name="serie" class="form-control input-sm" value="<?php echo $valores->serie;?>">
 									</div>
 								</div>
 								<div class="col-md-9 col-xs-9">
 									<div class="fg-line">
-										<input id="inputCorrelativo" type="number" name="correlativo" class="form-control input-sm" required>
+										<input id="inputCorrelativo" type="number" name="correlativo" class="form-control input-sm" value="<?php echo $valores->correlativo;?>" required>
 									</div>
 								</div>
 							</div>
@@ -45,7 +46,7 @@
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="md md-today"></i></span>
 								<div class="dtp-container dropdown fg-line open">
-									<input id="inputDate" type="text" name="fecha" class="form-control input-sm date-picker" data-toggle="dropdown">
+									<input id="inputDate" type="text" name="fecha" class="form-control input-sm date-picker" data-toggle="dropdown" value="<?php echo $valores->fecha;?>">
 								</div>
 							</div>
 						</div>
@@ -55,6 +56,7 @@
 								<span class="input-group-addon"><i class="md md-attach-money"></i></span>
 								<div class="fg-line select">
 									<select id="inputMoneda" type="text" name="moneda" class="form-control input-sm" required>
+										<option value="<?php echo $valores->moneda;?>" selected><?php echo $valores->moneda;?></option>
 										<option value="soles" selected>Soles</option>
 										<option value="dolares">Dólares</option>
 									</select>
@@ -65,7 +67,7 @@
 				</div>
 			</div>
 			<div class="card">
-				<div class="card-header bgm-bluegray m-b-20">
+				<div class="card-header bgm-cyan m-b-20">
 					<h2>Datos de Cliente <small>Ingresa los Datos del Cliente</small></h2>
 				</div>
 				<div class="card-body card-padding">
@@ -75,8 +77,8 @@
 							<div class=" input-group form-group">
 								<span class="input-group-addon"><i class="md md-person"></i></span>
 								<div class="fg-line">
-									<input id="inputCliente" type="text" name="cliente" class="form-control input-sm" required>
-									<input type="hidden" id="inputIdCliente" name="idcliente">
+									<input id="inputCliente" type="text" name="cliente" class="form-control input-sm" value="<?php echo $valores->razon_social;?>" required>
+									<input type="hidden" id="inputIdCliente" name="idcliente" value="<?php echo $valores->id_cliente;?>">
 								</div>
 							</div>
 						</div>
@@ -85,7 +87,7 @@
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="md md-dialpad"></i></span>
 								<div class="fg-line">
-									<input id="inputRuc" type="text" name="ruc" class="form-control input-sm">
+									<input id="inputRuc" type="text" name="ruc" class="form-control input-sm" disabled>
 								</div>
 							</div>
 						</div>
@@ -94,7 +96,7 @@
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="md md-place"></i></span>
 								<div class="fg-line">
-									<input id="inputDireccion" type="text" name="direccion" class="form-control input-sm">
+									<input id="inputDireccion" type="text" name="direccion" class="form-control input-sm" disabled>
 								</div>
 							</div>
 						</div>
@@ -102,7 +104,7 @@
 				</div>
 			</div>
 			<div class="card">
-				<div class="card-header bgm-bluegray m-b-20">
+				<div class="card-header bgm-cyan m-b-20">
 					<h2>Datos de Venta <small>Ingresa los Productos o Servicios</small></h2>
 				</div>
 				<div class="card-body card-padding">
@@ -167,3 +169,7 @@
 			</div>
 		</form>
 	</div>
+<?php foreach ($items as $fila) {
+	echo $fila->id." ".$fila->precio ."<br/>";
+}
+?>

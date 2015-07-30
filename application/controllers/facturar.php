@@ -58,11 +58,13 @@ class Facturar extends CI_Controller {
 
 		// Campos para tabla de Facturacion
 		// Recibe el Valor de los Campos por post, asignadas a una varibale
+		$tipodoc=$this->security->xss_clean(strip_tags($this->input->post('tipodoc')));
 		$serie=$this->security->xss_clean(strip_tags($this->input->post('serie')));
 		$correlativo=$this->security->xss_clean(strip_tags($this->input->post('correlativo')));
 		$fecha=$this->security->xss_clean(strip_tags($this->input->post('fecha')));
 		$moneda=$this->security->xss_clean(strip_tags($this->input->post('moneda')));
-		$cliente=$this->security->xss_clean(strip_tags($this->input->post('idcliente')));
+		$idcliente=$this->security->xss_clean(strip_tags($this->input->post('idcliente')));
+		$cliente=$this->security->xss_clean(strip_tags($this->input->post('cliente')));
 		$precio_total=$this->security->xss_clean(strip_tags($this->input->post('total')));
 		$direccion=$this->security->xss_clean(strip_tags($this->input->post('direccion')));
 		$ruc=$this->security->xss_clean(strip_tags($this->input->post('ruc')));
@@ -78,8 +80,8 @@ class Facturar extends CI_Controller {
 		$codigounico=$serie.$correlativo;
 
 		//Comprobamos que los campos necesarios para Factura esten llenos
-		if(isset($cliente) && !empty($cliente) && isset($fecha) && !empty($fecha) && isset($moneda) && !empty($moneda) && isset($serie) && !empty($serie)
-			&& isset($correlativo) && !empty($correlativo) && isset($precio_total) && !empty($precio_total)):
+		if( isset($tipodoc) && !empty($tipodoc) && isset($idcliente) && !empty($idcliente) && isset($cliente) && !empty($cliente) && isset($fecha) && !empty($fecha) && isset($moneda) && !empty($moneda) 
+			&& isset($serie) && !empty($serie) && isset($correlativo) && !empty($correlativo) && isset($precio_total) && !empty($precio_total)):
 
 			//comprobamos que no se haya registrado otra factura con el mismo numero de correlativo
 			$consulta_serie = $this->Facturar_model->consultar_factura($correlativo);
@@ -91,7 +93,7 @@ class Facturar extends CI_Controller {
 
 			else:
 
-				$this->Facturar_model->grabar_factura($codigounico, $cliente, $fecha, $moneda, $serie, $correlativo, $precio_total);
+				$this->Facturar_model->grabar_factura($codigounico, $idcliente, $cliente, $tipodoc, $fecha, $moneda, $serie, $correlativo, $precio_total);
 				echo "Listo, la factura se guardo :3";
 				$this->Facturar_model->grabar_producto($codigounico,$producto,$cantidad,$precio);
 				echo "Se guardo el Producto";

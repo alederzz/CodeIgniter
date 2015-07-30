@@ -9,6 +9,20 @@ class Inventario_model extends CI_Model {
 
 	}
 
+
+	//obtiene los datos para su edicion Controlador Editar
+	public function obtener_datos($id){
+		$this->db->where('id_factura', $id);
+		$consulta = $this->db->get('items');
+
+		if ($consulta->num_rows() > 0):
+			return $consulta->result();
+		else:
+			return false;
+		endif;
+
+	}
+
 	public function agregar_producto($sku, $nombre_producto, $cantidad, $precio){
 		
 		$datos = array(

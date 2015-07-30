@@ -50,8 +50,11 @@
 				<table id="data-table-command-docs" class="table table-striped table-vmiddle">
 					<thead>
 						<tr>
-							<th data-column-id="idunico">ID Unico</th>
-							<th data-column-id="idcliente">Id Cliente</th>
+							<th data-column-id="id" data-visible="false">ID</th>
+							<th data-column-id="idunico">Nro. Doc</th>
+							<th data-column-id="tipodoc">Tipo de Doc.</th>
+							<th data-column-id="idcliente" data-visible="false">Id Cliente</th>
+							<th data-column-id="razon-social"> Cliente</th>
 							<th data-column-id="monto">Monto</th>
 							<th data-column-id="fecha">Fecha</th>
 							<th data-column-id="comandos" data-formatter="comandos" data-sortable="false">Comandos</th>
@@ -60,16 +63,19 @@
 					<tbody>
 					<?php foreach ($documentos as $columna): ?>
 						<tr>
+							<td><?php echo $columna->id; ?></td>
 							<td><?php echo $columna->id_factura; ?></td>
+							<td><?php echo $columna->tipo_documento; ?></td>
 							<td><?php echo $columna->id_cliente; ?></td>
+							<td><?php echo $columna->razon_social; ?></td>
 							<td><?php echo $columna->monto; ?></td>
 							<td><?php echo $columna->fecha; ?></td>
-							<td></td>
+							<td><?php echo ($columna->estado == 0) ? "-active":"";  ?></td>
 						</tr>
 					<?php endforeach?>
 					</tbody>
 				</table>
 			</div>
 		</div>
-			
+
 	<!-- ./ contents -->				

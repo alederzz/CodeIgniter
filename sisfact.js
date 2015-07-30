@@ -179,9 +179,9 @@ $(document).on('ready',function(){
 		},
 		formatters: {
 			"comandos": function(column, row) {
-				return "<button type=\"button\" class=\"btn btn-icon command-edit\" data-row-id=\"" + row.ruc + "\"><span class=\"md md-edit\"></span></button> " + 
-	            "<button type=\"button\" class=\"btn btn-icon command-delete\" data-row-id=\"" + row.ruc + "\"><span class=\"md md-block\"></span></button> " + 
-	            "<button type=\"button\" class=\"btn btn-icon command-create\" data-row-id=\"" + row.ruc + "\"><span class=\"md md-remove-red-eye\"></span></button>";
+				return "<a href=\"editar/documento/"+row.id+"\" class=\"btn btn-icon command-edit\" data-toggle=\"modal\" data-target=\"#modalWider\" data-row-id=\"" + row.idunico + "\"><span class=\"md md-edit\"></span></a> " + 
+	            "<a class=\"btn btn-icon command-delete"+row.comandos+"\" data-row-id=\"" + row.idunico + "\"><span class=\"md md-block\"></span></a> " + 
+	            "<a class=\"btn btn-icon command-create\" data-row-id=\"" + row.idunico + "\"><span class=\"md md-remove-red-eye\"></span></a>";
 	          }
 	    }
 	});

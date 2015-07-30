@@ -30,16 +30,31 @@ class Facturar_model extends CI_Model{
 
 	}
 
+	public function obtener_datos($id){
+		$this->db->where('id', $id);
+		$consulta = $this->db->get('facturacion');
+
+		if ($consulta->num_rows() > 0):
+			return $consulta->row();
+		else:
+			return false;
+		endif;
+
+	}
+
 	//Graba los datos de faturacion en la Base de Datos
-	public function grabar_factura($codigounico, $cliente, $fecha, $moneda, $serie, $correlativo, $precio_total){
+	public function grabar_factura($codigounico, $idcliente, $cliente, $tipodoc, $fecha, $moneda, $serie, $correlativo, $precio_total){
 		$datos = array(
 			'id_factura'	=> $codigounico,
-			'id_cliente' => $cliente,
-			'fecha' => $fecha,
-			'serie' => $serie,
-			'correlativo' => $correlativo,
-			'moneda' => $moneda,
-			'monto' => $precio_total
+			'id_cliente'	=> $idcliente,
+			'razon_social' 	=> $cliente,
+			'tipo_documento'=> $tipodoc,
+			'serie'			=> $serie,
+			'correlativo' 	=> $correlativo,
+			'fecha'			=> $fecha,
+			'moneda'		=> $moneda,
+			'monto'			=> $precio_total,
+			'estado'		=> "1"
 			 );
 
 		$this->db->insert('facturacion',$datos);
@@ -47,13 +62,15 @@ class Facturar_model extends CI_Model{
 	}
 
 	public function grabar_producto($codigounico, $producto, $cantidad, $precio){
+		$precio = round($precio,2);
+
 		$datos = array(
 			'id_factura'=> $codigounico,
 			'id_producto'	=> $producto,
 			'cantidad'		=> $cantidad,
-			'precio'		=> $cantidad*$precio,
-			'precio_unit'	=> $precio
-			 );
+			'precio_unit'	=> $precio,
+			'precio'		=> $cantidad*$precio
+		);
 
 		$this->db->insert('items',$datos);
 
