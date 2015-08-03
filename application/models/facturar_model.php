@@ -61,15 +61,16 @@ class Facturar_model extends CI_Model{
 
 	}
 
-	public function grabar_producto($codigounico, $producto, $cantidad, $precio){
-		$precio = round($precio,2);
-
+	public function grabar_producto($codigounico, $producto, $cantidad, $precio_unit){
+		$precio_unit = round($precio_unit,2);
+		$precio_total = $cantidad*$precio_unit;
+		$precio_total = round($precio_total,2);
 		$datos = array(
 			'id_factura'=> $codigounico,
 			'id_producto'	=> $producto,
 			'cantidad'		=> $cantidad,
-			'precio_unit'	=> $precio,
-			'precio'		=> $cantidad*$precio
+			'precio_unit'	=> $precio_unit,
+			'precio'		=> $precio_total
 		);
 
 		$this->db->insert('items',$datos);

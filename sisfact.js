@@ -43,29 +43,6 @@ $(document).on('ready',function(){
 		}
 	})
 	//./ Agrega las clases ACTIVE al Menu
-	
-
-	//Checkbox Producto personalizado
-	$('.act_custom').click(function(){
-
-		//Si el checkbox ya esta activo
-		if($(this).attr('checked') == "checked"){
-
-			//bloquea los campos de cantidad y precio
-			$("#inputCantidad, #inputPrecio").attr('disabled',"");
-
-		}else{
-
-			//Si el checkbox no esta activo
-			//Desbloque los campos de cantida y precio
-			$("#inputCantidad, #inputPrecio").removeAttr('disabled');
-			$(this).attr('checked', 'checked');
-
-		}
-
-	});
-	//./ Checkbox Producto personalizado
-
 
 	//  Autocompletar campos
 
@@ -82,60 +59,28 @@ $(document).on('ready',function(){
 	});
 
 	//./ Autocompletar campos
-
-	var cambios = function (){
-		//$(".producto-container > div:nth-child(1)").attr("class","producto-row-0");
-		$(".producto-container > div:nth-child(2)").attr("class","producto-row-1");
-		$(".producto-container > div:nth-child(3)").attr("class","producto-row-2");
-		$(".producto-container > div:nth-child(4)").attr("class","producto-row-3");
-		$(".producto-container > div:nth-child(5)").attr("class","producto-row-4");
-		$(".producto-container > div:nth-child(6)").attr("class","producto-row-5");
-		$(".producto-container > div:nth-child(7)").attr("class","producto-row-6");
-		$(".producto-container > div:nth-child(8)").attr("class","producto-row-7");
-
-	}
-
-	//Agrega Nuevos Campos de Productos
-	var i = 1;
-	$('.producto-container').on('click','#add-producto',function(e){
-		e.preventDefault();//eliminamos el evento por defecto
-		++i;
-		$("#delete-producto").removeAttr("disabled");
-		//clona la primera fila del producto, la mete al ultimo del contenedor
-		$(".producto-row-0").clone().appendTo(".producto-container");
-		cambios();
-		
-
-	});
-
-	$('.producto-container').on('click','#delete-producto',function(e){
-		e.preventDefault();
-		$(this).parent('div').parent('div').remove();
-		console.log(--i)
-		if (i==1) {
-			$("#delete-producto").attr("disabled","disabled");
-		}
-	});
 	
-
-
-/*	    var max_fields      = 10; //Maximo numero de campos permitidos
-	    var wrapper         = $(".producto-container"); //Contenedor de los campos
-	    var add_button      = $("#add-producto"); //Boton que clonará
-	    
-	    var x = 1; //contador inicial
-	    $(add_button).click(function(e){ //cuando se haga clic en el boton
-	        e.preventDefault();
-	        if(x < max_fields){ //maximos input permitidos
-	            x++; //incrementa el valor
-	            $(wrapper).append('<div><input type="text" name="mytext[]"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
-	        }
-	    });
-	    
-	    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-	        e.preventDefault(); $(this).parent('div').remove(); x--;
-	    })*/
-
+	// Repetidor de campos de Productos
+		$('.repeater').repeater({
+		            hide: function (deleteElement) {
+		            	var elemento=$(this);
+		            	swal({   
+    	                    title: "Estas Seguro?",   
+    	                    text: "Se borrará toda la fila!",   
+    	                    type: "warning",   
+    	                    showCancelButton: true,   
+    	                    confirmButtonColor: "#DD6B55",   
+    	                    confirmButtonText: "Si, bórralo!",
+    	                    cancelButtonText: 'Cancelar',   
+    	                    closeOnConfirm: false
+		            	}, function(){   
+    	                    swal("Producto Borrado!", "Se ha eliminado el Producto.", "success"); 
+    	                	elemento.slideUp(deleteElement);
+		            	});
+		            },
+		            isFirstItemUndeletable: true
+		        })
+	// ./ Repetidor de campos de Productos
 
 	//Command Buttons
 	$("#data-table-command").bootgrid({

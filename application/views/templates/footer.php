@@ -45,6 +45,7 @@
         
         <!-- Javascript Libraries -->
         <script src="<?php echo base_url();?>js/jquery-2.1.1.min.js"></script>
+        <script src="<?php echo base_url();?>js/jquery.repeater.min.js"></script>
         <script src="<?php echo base_url();?>js/bootstrap.min.js"></script>
         
         <script src="<?php echo base_url();?>vendors/bootgrid/jquery.bootgrid.min.js"></script>
@@ -55,6 +56,7 @@
         <script src="<?php echo base_url();?>vendors/input-mask/input-mask.min.js"></script>
         <script src="<?php echo base_url();?>vendors/sparklines/jquery.sparkline.min.js"></script>
         <script src="<?php echo base_url();?>vendors/easypiechart/jquery.easypiechart.min.js"></script>
+        <script src="<?php echo base_url();?>vendors/sweet-alert/sweet-alert.min.js"></script>
         
         <script src="<?php echo base_url();?>vendors/fullcalendar/lib/moment.min.js"></script>
         <script src="<?php echo base_url();?>vendors/fullcalendar/fullcalendar.min.js"></script>

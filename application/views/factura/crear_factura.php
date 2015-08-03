@@ -101,68 +101,84 @@
 					</div>
 				</div>
 			</div>
-			<div class="card">
-				<div class="card-header bgm-bluegray m-b-20">
-					<h2>Datos de Venta <small>Ingresa los Productos o Servicios</small></h2>
-				</div>
-				<div class="card-body card-padding">
-					<div class="row">
-						<!-- Campo Productos -->
-						<div class="producto-container">
-							<div class="producto producto-row-0">
-								<div class="col-md-5">
-									<div class="form-group fg-line">
-										<label class="sr-only" for="">Producto</label>
-										<input type="text" name="producto" class="form-control input-sm" placeholder="Producto" required>
-									</div>
-								</div>
-								<div class="col-md-2">
-									<div class="form-group fg-line">
-										<label class="sr-only" for="inputCantidad">Cantidad</label>
-										<input type="text" id="inputCantidad" name="cantidad" class="form-control input-sm" placeholder="Ingrese la cantidad" disabled>
-									</div>
-								</div>
-								<div class="col-md-2">
-									<div class="form-group fg-line">
-										<label class="sr-only" for="inputPrecio">Precio</label>
-										<input type="text" id="inputPrecio" name="precio" class="form-control input-sm" data-mask="000 000.00" data-mask-reverse="true" placeholder="Precio" disabled>
-									</div>
-								</div>
-								<div class="col-md-2">
-									<div class="checkbox form-group fg-line">
-										<label for="">Producto Personalizado</label>
-										<input type="checkbox" name="act_custom" class="act_custom">
-										<i class="input-helper"></i>
-									</div>
-								</div>
-								<div id="botones" class="form-group col-md-1">
-									<label class="sr-only" for="">Agregar otro Producto</label>
-									<button id="add-producto" class="btn btn-primary"><i class="md md-add"></i></button>
-									<label class="sr-only" for="">Eliminar Producto</label>
-									<button id="delete-producto" class="btn btn-primary" disabled><i class="md md-remove"></i></button>
-								</div>
-							</div>
+			<div class="row">
+				<div class="col-md-9">
+					<div class="card repeater">
+						<div class="card-header bgm-bluegray m-b-20">
+							<h2>Datos de Venta <small>Ingresa los Productos o Servicios</small></h2>
+							<button data-repeater-create type="button" class="btn bgm-red btn-float waves-effect waves-effect waves-button waves-float"><i class="md md-add"></i></button>
 						</div>
-						<!-- Fin Campo Productos -->
-						<div class="form-group col-md-2 col-md-offset-10">
-							<h3>Total</h3>
-							<div class="input-group">
-							  <span class="input-group-addon">Subtotal</span>
-							  <input type="text" class="form-control" aria-describedby="subtotal">
-							</div>
-							<br/>
-							<div class="input-group">
-							  <span class="input-group-addon">I.G.V</span>
-							  <input type="text" class="form-control" aria-describedby="igv">
-							</div>
-							<br/>
-							<div class="input-group">
-							  <span class="input-group-addon">Total</span>
-							  <input type="text" name="total" class="form-control" aria-describedby="total">
+						<div class="card-body card-padding">
+							<div class="row">
+								<!-- Campo Productos -->
+								<div data-repeater-list="group-a" class="col-md-12 producto-container">
+									<div data-repeater-item class="row">
+										<div class="col-md-2">
+											<div class="form-group fg-line">
+												<label for="inputCantidad">Cantidad</label>
+												<input type="text" id="inputCantidad" name="cantidad" class="form-control input-sm" placeholder="Ingrese la cantidad">
+											</div>
+										</div>
+										<div class="col-md-5">
+											<div class="form-group fg-line">
+												<label for="inputProducto">Producto</label>
+												<input type="text" id="inputProducto" name="producto" class="form-control input-sm" placeholder="Escriba el Nombre" required>
+											</div>
+										</div>
+										<div class="col-md-2">
+											<div class="form-group fg-line">
+												<label for="inputPrecio">Precio</label>
+												<input type="text" id="inputPrecio" name="precio" class="form-control input-sm" data-mask="000 000.00" data-mask-reverse="true" placeholder="Solo Números">
+											</div>
+										</div>
+										<div id="botones" class="form-group col-md-offset-2 col-md-1">
+											<button data-repeater-delete type="button" id="delete-producto" class="btn btn-primary"><i class="md md-remove"></i></button>
+										</div>
+									</div>
+								</div>
+								<!-- Fin Campo Productos -->
 							</div>
 						</div>
 					</div>
-					<button class="btn btn-success waves-effect waves-button waves-float">Crear Documento</button>
+				</div>
+				<div class="col-md-3">
+					<div class="card">
+						<div class="card-header bgm-gray">
+							<h2>Totales <small>Importe total</small></h2>
+						</div>
+						<div class="card-body card-padding">
+							<div class="row form-group">
+								<div class="input-group">
+								  <span class="input-group-addon">Subtotal</span>
+								  <input type="text" class="form-control" aria-describedby="subtotal">
+								</div>
+								<br/>
+								<div class="input-group">
+								  <span class="input-group-addon">I.G.V</span>
+								  <input type="text" class="form-control" aria-describedby="igv">
+								</div>
+								<br/>
+								<div class="input-group">
+								  <span class="input-group-addon">Total</span>
+								  <input type="text" name="total" class="form-control" aria-describedby="total">
+								</div>
+							</div>
+							<div class="row form-group">
+                                <div class="col-md-12">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" value="">
+                                            <i class="input-helper"></i>
+                                            Precio Incluye IGV
+                                        </label>
+                                    </div>
+                                </div>
+							</div>
+							<div class="row">
+								<button class="btn btn-lg btn-block btn-success waves-effect waves-button waves-float waves-effect waves-button waves-float">Crear Documento</button>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</form>
