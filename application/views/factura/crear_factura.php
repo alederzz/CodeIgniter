@@ -127,11 +127,17 @@
 										</div>
 										<div class="col-md-2">
 											<div class="form-group fg-line">
+												<label for="inputPrecioUnidad">Precio Unidad</label>
+												<input type="text" id="inputPrecioUnidad" name="precio_unit" class="form-control input-sm" placeholder="Solo Números">
+											</div>
+										</div>
+										<div class="col-md-2">
+											<div class="form-group fg-line">
 												<label for="inputPrecio">Precio</label>
 												<input type="text" id="inputPrecio" name="precio" class="form-control input-sm" data-mask="000 000.00" data-mask-reverse="true" placeholder="Solo Números">
 											</div>
 										</div>
-										<div id="botones" class="form-group col-md-offset-2 col-md-1">
+										<div id="botones" class="form-group col-md-1">
 											<button data-repeater-delete type="button" id="delete-producto" class="btn btn-primary"><i class="md md-remove"></i></button>
 										</div>
 									</div>

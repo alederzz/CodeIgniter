@@ -71,9 +71,9 @@ class Facturar extends CI_Controller {
 
 
 		//Campos para tabla producto
-		$producto=$this->security->xss_clean(strip_tags($this->input->post('producto')));
-		$cantidad=$this->security->xss_clean(strip_tags($this->input->post('cantidad')));
-		$precio=$this->security->xss_clean(strip_tags($this->input->post('precio')));
+		$array=$this->security->xss_clean($this->input->post('group-a'));
+		// $cantidad=$this->security->xss_clean(strip_tags($this->input->post('cantidad')));
+		// $precio=$this->security->xss_clean(strip_tags($this->input->post('precio')));
 
 
 		//Codigo unico de Documentos
@@ -95,7 +95,7 @@ class Facturar extends CI_Controller {
 
 				$this->Facturar_model->grabar_factura($codigounico, $idcliente, $cliente, $tipodoc, $fecha, $moneda, $serie, $correlativo, $precio_total);
 				echo "Listo, la factura se guardo :3";
-				$this->Facturar_model->grabar_producto($codigounico,$producto,$cantidad,$precio);
+				$this->Facturar_model->grabar_producto($codigounico,$array);
 				echo "Se guardo el Producto";
 
 			endif;

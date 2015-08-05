@@ -5,7 +5,8 @@ class Facturar_model extends CI_Model{
 	}
 
 	public function listar_documentos(){
-		
+
+		$this->db->order_by("id", "desc"); 
 		$consulta = $this->db->get('facturacion');
 		return $consulta->result();
 
@@ -61,19 +62,21 @@ class Facturar_model extends CI_Model{
 
 	}
 
-	public function grabar_producto($codigounico, $producto, $cantidad, $precio_unit){
-		$precio_unit = round($precio_unit,2);
-		$precio_total = $cantidad*$precio_unit;
-		$precio_total = round($precio_total,2);
-		$datos = array(
-			'id_factura'=> $codigounico,
-			'id_producto'	=> $producto,
-			'cantidad'		=> $cantidad,
-			'precio_unit'	=> $precio_unit,
-			'precio'		=> $precio_total
-		);
+	public function grabar_producto($codigounico,$array){
 
-		$this->db->insert('items',$datos);
+		$datos = array(); //abre el array
+
+		for($i=0; $i<count($array); $i++){
+		    $datos[] = array(
+		    	'id_factura'	=> $codigounico,
+				'producto'		=> $array[$i]['producto'],
+				'cantidad'		=> $array[$i]['cantidad'],
+				'precio_unit'	=> $array[$i]['precio_unit'],
+				'precio'		=> $array[$i]['precio']
+		    );
+		}
+
+		$this->db->insert_batch('items',$datos);
 
 	}
 }

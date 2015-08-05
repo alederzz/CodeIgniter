@@ -130,5 +130,20 @@ $(document).on('ready',function(){
 	          }
 	    }
 	});
+	// ./ Comandos para Tabla Documentos
 
-});
+	// Sumar Precios
+
+	var precio,cantidad,precioUnidad;
+
+		$(".producto-container").on("change","#inputPrecioUnidad,#inputCantidad",function(){
+			cantidad=$("#inputCantidad").val();
+			precioUnidad=$("#inputPrecioUnidad").val();
+
+			if(precioUnidad!=''){
+				precio=cantidad*precioUnidad;
+				$("#inputPrecio").val(precio);
+			}
+		});
+
+});//fin document on ready

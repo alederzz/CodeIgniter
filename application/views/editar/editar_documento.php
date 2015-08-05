@@ -114,31 +114,41 @@
 							<div class="row">
 								<!-- Campo Productos -->
 								<div data-repeater-list="group-a" class="col-md-12 producto-container">
-									<?php foreach ($items as $productoValor):?>
-									<div data-repeater-item class="row">
-										<div class="col-md-2">
-											<div class="form-group fg-line">
-												<label for="inputCantidad">Cantidad</label>
-												<input type="text" id="inputCantidad" name="cantidad" class="form-control input-sm" placeholder="Ingrese la cantidad" value="<?php echo $productoValor->cantidad; ?>">
+									<?php if(count($items)>1): ?>
+										<?php foreach ($items as $productoValor):?>
+										<div data-repeater-item class="row">
+											<div class="col-md-2">
+												<div class="form-group fg-line">
+													<label for="inputCantidad">Cantidad</label>
+													<input type="text" id="inputCantidad" name="cantidad" class="form-control input-sm" placeholder="Ingrese la cantidad" value="<?php echo $productoValor->cantidad; ?>">
+												</div>
+											</div>
+											<div class="col-md-5">
+												<div class="form-group fg-line">
+													<label for="inputProducto">Producto</label>
+													<input type="text" id="inputProducto" name="producto" class="form-control input-sm" placeholder="Escriba el Nombre" value="<?php echo $productoValor->producto; ?>" required>
+												</div>
+											</div>
+											<div class="col-md-2">
+												<div class="form-group fg-line">
+													<label for="inputPrecioUnidad">Precio Unidad</label>
+													<input type="text" id="inputPrecioUnidad" name="precio" class="form-control input-sm" data-mask="000 000.00" data-mask-reverse="true" placeholder="Solo Numeros" value="<?php echo $productoValor->precio_unit; ?>">
+												</div>
+											</div>
+											<div class="col-md-2">
+												<div class="form-group fg-line">
+													<label for="inputPrecio">Precio</label>
+													<input type="text" id="inputPrecio" name="precio" class="form-control input-sm" data-mask="000 000.00" data-mask-reverse="true" placeholder="Solo Numeros" value="<?php echo $productoValor->precio; ?>">
+												</div>
+											</div>
+											<div id="botones" class="form-group col-md-1">
+												<button data-repeater-delete id="delete-producto" type="button" class="btn btn-primary"><i class="md md-remove"></i></button>
 											</div>
 										</div>
-										<div class="col-md-5">
-											<div class="form-group fg-line">
-												<label for="inputProducto">Producto</label>
-												<input type="text" id="inputProducto" name="producto" class="form-control input-sm" placeholder="Escriba el Nombre" required>
-											</div>
-										</div>
-										<div class="col-md-2">
-											<div class="form-group fg-line">
-												<label for="inputPrecio">Precio</label>
-												<input type="text" id="inputPrecio" name="precio" class="form-control input-sm" data-mask="000 000.00" data-mask-reverse="true" placeholder="Solo Numeros" value="<?php echo $productoValor->precio; ?>">
-											</div>
-										</div>
-										<div id="botones" class="form-group col-md-offset-2 col-md-1">
-											<button data-repeater-delete id="delete-producto" type="button" class="btn btn-primary"><i class="md md-remove"></i></button>
-										</div>
-									</div>
-									<?php endforeach; ?>
+										<?php endforeach; ?>
+								<?php else: ?>
+								<p>No hay Productos</p>
+								<?php endif; ?>
 								</div>
 								<!-- Fin Campo Productos -->
 							</div>
@@ -176,7 +186,3 @@
 			</div>
 		</form>
 	</div>
-<?php foreach ($items as $fila) {
-	echo $fila->id." ".$fila->precio ."<br/>";
-}
-?>
