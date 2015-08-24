@@ -2023,6 +2023,7 @@ div.fc-row {
 
 .command-edit,
 .command-delete,
+.command-print,
 .command-create {
   background: #fff;
   border: 1px solid #eee !important;
@@ -2041,6 +2042,11 @@ div.fc-row {
   border: 1px solid #fff !important;
 }
 
+.command-print:hover{
+  background: #006eff;
+  color: white;
+  border: 1px solid #fff!important;
+}
 .command-create:hover{
   background: #4CAF50;
   color: white;

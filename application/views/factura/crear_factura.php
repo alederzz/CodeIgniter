@@ -166,7 +166,7 @@
 								<br/>
 								<div class="input-group">
 								  <span class="input-group-addon">Total</span>
-								  <input type="text" name="total" class="form-control" aria-describedby="total">
+								  <input id="inputTotal" type="text" name="total" class="form-control" aria-describedby="total">
 								</div>
 							</div>
 							<div class="row form-group">

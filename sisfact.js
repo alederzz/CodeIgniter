@@ -1,5 +1,15 @@
 $(document).on('ready',function(){
-
+	function sumarTotales(){
+		// Suma los precios totales
+					$("#inputTotal").val("0");
+					if (inputstotal > 0) {
+						$(".row #inputPrecio").each(function(index, value){
+							monto=parseFloat($(this).val()) + parseFloat($("#inputTotal").val());
+							$("#inputTotal").val(monto.toFixed(2));
+						});
+					}
+					// ./ Suma los precio finales en Total
+	}
 
 	//Welcome Message (not for login page)
 	function notify(message, type){
@@ -75,7 +85,8 @@ $(document).on('ready',function(){
     	                    closeOnConfirm: false
 		            	}, function(){   
     	                    swal("Producto Borrado!", "Se ha eliminado el Producto.", "success"); 
-    	                	elemento.slideUp(deleteElement);
+    	                	elemento.remove();
+    	                	sumarTotales();
 		            	});
 		            },
 		            isFirstItemUndeletable: true
@@ -110,6 +121,7 @@ $(document).on('ready',function(){
 	//Command Buttons
 	$("#data-table-command-docs").bootgrid({
 		caseSensitive: false,
+		rowCount: 15,
 		labels: {
 		        search: "Buscar",
 		        infos: "Mostrando {{ctx.start}} a {{ctx.end}} de {{ctx.total}} elementos",
@@ -125,25 +137,86 @@ $(document).on('ready',function(){
 		formatters: {
 			"comandos": function(column, row) {
 				return "<a href=\"editar/documento/"+row.id+"\" class=\"btn btn-icon command-edit\" data-toggle=\"modal\" data-target=\"#modalWider\" data-row-id=\"" + row.idunico + "\"><span class=\"md md-edit\"></span></a> " + 
-	            "<a class=\"btn btn-icon command-delete"+row.comandos+"\" data-row-id=\"" + row.idunico + "\"><span class=\"md md-block\"></span></a> " + 
-	            "<a class=\"btn btn-icon command-create\" data-row-id=\"" + row.idunico + "\"><span class=\"md md-remove-red-eye\"></span></a>";
+	            "<a class=\"btn btn-icon command-delete"+row.comandos+"\" data-row-id=\"" + row.id + "\"><span class=\"md md-block\"></span></a> " + 
+	            "<a class=\"btn btn-icon command-create\" data-row-id=\"" + row.idunico + "\"><span class=\"md md-remove-red-eye\"></span></a> " +
+	            "<a href=\"reportes\" class=\"btn btn-icon command-print\" data-row-id=\"" + row.idunico + "\"><span class=\"md md-print\"></span></a> ";
 	          }
 	    }
 	});
+	$("#data-table-command-docs tbody").on("click","a.command-delete",function(){
+		var btn=$(this);
+		$.ajax({
+		  url: 'facturar/anular_doc',
+		  type: 'POST',
+		  async: true,
+		  data: 'id=' + $(this).attr("data-row-id")+'&estado=0',
+		  success: function(){
+		  	//si la clase command-delete existe
+		  	//la elimina y agrega la nueva
+		  	if (btn.hasClass("command-delete")==true) {
+		  		btn.removeClass("command-delete");
+		  		btn.addClass("command-delete-active");
+		  	};
+		  },
+		  error: function(){
+		  	alert("Hubo un error enviando la petición al servidor, contactar al administrador")
+		  }
+		});
+	});
+	$("#data-table-command-docs tbody").on("click","a.command-delete-active",function(){
+		var btn=$(this);
+		$.ajax({
+		  url: 'facturar/anular_doc',
+		  type: 'POST',
+		  async: true,
+		  data: 'id=' + $(this).attr("data-row-id")+'&estado=1',
+		  success: function(){
+		  	//si la clase command-delete-active existe
+		  	//la elimina y agrega la nueva
+		  	if (btn.hasClass("command-delete-active")==true) {
+		  		btn.removeClass("command-delete-active");
+		  		btn.addClass("command-delete");
+		  	};
+		  },
+		  error: function(){
+		  	alert("Hubo un error enviando la petición al servidor, contactar al administrador")
+		  }
+		});
+	});
+
 	// ./ Comandos para Tabla Documentos
 
 	// Sumar Precios
 
-	var precio,cantidad,precioUnidad;
+		var precio,cantidad,precioUnidad;
+		var monto, total, inputstotal=$(".row #inputPrecio").length;//obtiene el numero de campos de precio
 
-		$(".producto-container").on("change","#inputPrecioUnidad,#inputCantidad",function(){
-			cantidad=$("#inputCantidad").val();
-			precioUnidad=$("#inputPrecioUnidad").val();
+		
+		sumarTotales();
 
-			if(precioUnidad!=''){
-				precio=cantidad*precioUnidad;
-				$("#inputPrecio").val(precio);
-			}
+		//sí, cambia los valores de Cantidad y Precio
+		$(".producto-container").on("load keyup","#inputPrecioUnidad,#inputCantidad",function(){
+
+
+			$("div[data-repeater-item]").each(function(index,valor){
+				
+				cantidad=$(this).find("#inputCantidad").val();
+				precioUnidad=$(this).find("#inputPrecioUnidad").val();
+
+				// Introduce el costo total del producto
+				if(precioUnidad!=''){
+
+					precio=cantidad*precioUnidad;
+					$(this).find("#inputPrecio").val(precio.toFixed(2));
+					// calcular_total();
+
+					sumarTotales();
+				}
+
+				//alert("Index: "+index+" contiene "+$(this).find("input#inputPrecio").val() );
+			});
+
 		});
+
 
 });//fin document on ready

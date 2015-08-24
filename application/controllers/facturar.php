@@ -53,6 +53,13 @@ class Facturar extends CI_Controller {
 		endif;
 	}
 
+	//anular facturas con ajax
+	public function anular_doc(){
+		$id=$this->input->post('id');
+		$estado=$this->input->post('estado');
+		$this->Facturar_model->actualizar_factura($id,$estado);
+	}
+
 	//Pagina invisible, guardara los datos que se envio del formulario
 	public function guardar_datos_factura(){
 

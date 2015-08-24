@@ -114,7 +114,7 @@
 							<div class="row">
 								<!-- Campo Productos -->
 								<div data-repeater-list="group-a" class="col-md-12 producto-container">
-									<?php if(count($items)>1): ?>
+									<?php if(count($items) > 0 && $items != FALSE): ?>
 										<?php foreach ($items as $productoValor):?>
 										<div data-repeater-item class="row">
 											<div class="col-md-2">
@@ -132,13 +132,13 @@
 											<div class="col-md-2">
 												<div class="form-group fg-line">
 													<label for="inputPrecioUnidad">Precio Unidad</label>
-													<input type="text" id="inputPrecioUnidad" name="precio" class="form-control input-sm" data-mask="000 000.00" data-mask-reverse="true" placeholder="Solo Numeros" value="<?php echo $productoValor->precio_unit; ?>">
+													<input type="text" id="inputPrecioUnidad" name="precio" class="form-control input-sm" placeholder="Solo Numeros" value="<?php echo $productoValor->precio_unit; ?>">
 												</div>
 											</div>
 											<div class="col-md-2">
 												<div class="form-group fg-line">
 													<label for="inputPrecio">Precio</label>
-													<input type="text" id="inputPrecio" name="precio" class="form-control input-sm" data-mask="000 000.00" data-mask-reverse="true" placeholder="Solo Numeros" value="<?php echo $productoValor->precio; ?>">
+													<input type="text" id="inputPrecio" name="precio" class="form-control input-sm" placeholder="Solo Numeros" value="<?php echo $productoValor->precio; ?>" disabled>
 												</div>
 											</div>
 											<div id="botones" class="form-group col-md-1">
@@ -174,8 +174,19 @@
 								<br/>
 								<div class="input-group">
 								  <span class="input-group-addon">Total</span>
-								  <input type="text" name="total" class="form-control" aria-describedby="total">
+								  <input id="inputTotal" type="text" name="total" class="form-control" value="" aria-describedby="total">
 								</div>
+							</div>
+							<div class="row form-group">
+                                <div class="col-md-12">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" value="">
+                                            <i class="input-helper"></i>
+                                            Precio Incluye IGV
+                                        </label>
+                                    </div>
+                                </div>
 							</div>
 							<div class="row">
 								<button class="btn btn-lg btn-block btn-success waves-effect waves-button waves-float waves-effect waves-button waves-float">Actualizar</button>

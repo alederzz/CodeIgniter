@@ -31,6 +31,15 @@ class Facturar_model extends CI_Model{
 
 	}
 
+	public function actualizar_factura($id,$estado){
+		$data = array(
+		               'estado' => $estado
+		            );
+
+		$this->db->where('id', $id);
+		$this->db->update('facturacion', $data); 
+	}
+
 	public function obtener_datos($id){
 		$this->db->where('id', $id);
 		$consulta = $this->db->get('facturacion');
