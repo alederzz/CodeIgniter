@@ -134,7 +134,7 @@
 										<div class="col-md-2">
 											<div class="form-group fg-line">
 												<label for="inputPrecio">Precio</label>
-												<input type="text" id="inputPrecio" name="precio" class="form-control input-sm" data-mask="000 000.00" data-mask-reverse="true" placeholder="Solo Números">
+												<input type="text" id="inputPrecio" name="precio" class="form-control input-sm" placeholder="Solo Números" readonly>
 											</div>
 										</div>
 										<div id="botones" class="form-group col-md-1">
@@ -156,12 +156,12 @@
 							<div class="row form-group">
 								<div class="input-group">
 								  <span class="input-group-addon">Subtotal</span>
-								  <input type="text" class="form-control" aria-describedby="subtotal">
+								  <input id="inputSubtotal" type="text" class="form-control" aria-describedby="subtotal">
 								</div>
 								<br/>
 								<div class="input-group">
 								  <span class="input-group-addon">I.G.V</span>
-								  <input type="text" class="form-control" aria-describedby="igv">
+								  <input id="inputIgv" type="text" class="form-control" aria-describedby="igv">
 								</div>
 								<br/>
 								<div class="input-group">
@@ -173,7 +173,7 @@
                                 <div class="col-md-12">
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" value="">
+                                            <input id="incluyeIGV" type="checkbox" value="">
                                             <i class="input-helper"></i>
                                             Precio Incluye IGV
                                         </label>

@@ -164,12 +164,12 @@
 							<div class="row form-group">
 								<div class="input-group">
 								  <span class="input-group-addon">Subtotal</span>
-								  <input type="text" class="form-control" aria-describedby="subtotal">
+								  <input id="inputSubtotal" type="text" class="form-control" aria-describedby="subtotal">
 								</div>
 								<br/>
 								<div class="input-group">
 								  <span class="input-group-addon">I.G.V</span>
-								  <input type="text" class="form-control" aria-describedby="igv">
+								  <input id="inputIgv" type="text" class="form-control" aria-describedby="igv">
 								</div>
 								<br/>
 								<div class="input-group">
@@ -181,7 +181,7 @@
                                 <div class="col-md-12">
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" value="">
+                                            <input id="incluyeIGV" type="checkbox" value="">
                                             <i class="input-helper"></i>
                                             Precio Incluye IGV
                                         </label>
