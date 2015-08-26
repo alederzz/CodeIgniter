@@ -173,7 +173,7 @@
                                 <div class="col-md-12">
                                     <div class="checkbox">
                                         <label>
-                                            <input id="incluyeIGV" type="checkbox" value="">
+                                            <input id="incluyeIGV" name="igv" type="checkbox" value="0">
                                             <i class="input-helper"></i>
                                             Precio Incluye IGV
                                         </label>

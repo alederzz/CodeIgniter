@@ -53,7 +53,7 @@ class Facturar_model extends CI_Model{
 	}
 
 	//Graba los datos de faturacion en la Base de Datos
-	public function grabar_factura($codigounico, $idcliente, $cliente, $tipodoc, $fecha, $moneda, $serie, $correlativo, $precio_total){
+	public function grabar_factura($codigounico, $idcliente, $cliente, $tipodoc, $fecha, $moneda, $serie, $correlativo, $precio_total, $igv){
 		$datos = array(
 			'id_factura'	=> $codigounico,
 			'id_cliente'	=> $idcliente,
@@ -64,7 +64,8 @@ class Facturar_model extends CI_Model{
 			'fecha'			=> $fecha,
 			'moneda'		=> $moneda,
 			'monto'			=> $precio_total,
-			'estado'		=> "1"
+			'estado'		=> "1",
+			'igv'			=> $igv
 			 );
 
 		$this->db->insert('facturacion',$datos);

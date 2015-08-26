@@ -75,6 +75,7 @@ class Facturar extends CI_Controller {
 		$precio_total=$this->security->xss_clean(strip_tags($this->input->post('total')));
 		$direccion=$this->security->xss_clean(strip_tags($this->input->post('direccion')));
 		$ruc=$this->security->xss_clean(strip_tags($this->input->post('ruc')));
+		$igv=$this->security->xss_clean(strip_tags($this->input->post('igv')));
 
 
 		//Campos para tabla producto
@@ -88,7 +89,7 @@ class Facturar extends CI_Controller {
 
 		//Comprobamos que los campos necesarios para Factura esten llenos
 		if( isset($tipodoc) && !empty($tipodoc) && isset($idcliente) && !empty($idcliente) && isset($cliente) && !empty($cliente) && isset($fecha) && !empty($fecha) && isset($moneda) && !empty($moneda) 
-			&& isset($serie) && !empty($serie) && isset($correlativo) && !empty($correlativo) && isset($precio_total) && !empty($precio_total)):
+			&& isset($serie) && !empty($serie) && isset($correlativo) && !empty($correlativo) && isset($precio_total) && !empty($precio_total) && isset($igv) && !empty($igv)):
 
 			//comprobamos que no se haya registrado otra factura con el mismo numero de correlativo
 			$consulta_serie = $this->Facturar_model->consultar_factura($correlativo);
@@ -100,15 +101,26 @@ class Facturar extends CI_Controller {
 
 			else:
 
-				$this->Facturar_model->grabar_factura($codigounico, $idcliente, $cliente, $tipodoc, $fecha, $moneda, $serie, $correlativo, $precio_total);
-				echo "Listo, la factura se guardo :3";
+				$this->Facturar_model->grabar_factura($codigounico, $idcliente, $cliente, $tipodoc, $fecha, $moneda, $serie, $correlativo, $precio_total, $igv);
+				echo "Listo, la factura se guardo<br>";
 				$this->Facturar_model->grabar_producto($codigounico,$array);
 				echo "Se guardo el Producto";
 
 			endif;
 
 		else:
-			echo "<h2>No Has mandado Datos";
+			echo "<h2>No Has mandado Datos<br>";
+			echo $tipodoc;
+		echo $serie;
+		echo $correlativo;
+		echo $fecha;
+		echo $moneda;
+		echo $idcliente;
+		echo $cliente;
+		echo $precio_total;
+		echo $direccion."<br/>";
+		echo $ruc."<br/>";
+		echo $igv;
 		endif;
 	}
 }

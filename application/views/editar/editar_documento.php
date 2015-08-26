@@ -181,7 +181,7 @@
                                 <div class="col-md-12">
                                     <div class="checkbox">
                                         <label>
-                                            <input id="incluyeIGV" type="checkbox" value="">
+                                            <input id="incluyeIGV" name="igv" type="checkbox" value="" <?php echo $var=($valores->igv==1)? "checked":"";?>>
                                             <i class="input-helper"></i>
                                             Precio Incluye IGV
                                         </label>

@@ -2,25 +2,42 @@ $(document).on('ready',function(){
 	function sumarTotales(){
 		// Suma los precios totales
 		$("#inputSubtotal").val("0");
-		var primerprecio=$("#inputPrecio").val();
+		var primerprecio=$("#inputPrecio").val();//obtiene el valor del primer campo de precio
 		if (inputstotal > 0 && primerprecio!='') {
 			$(".row #inputPrecio").each(function(index, value){
 				monto=parseFloat($(this).val()) + parseFloat($("#inputSubtotal").val());
-				$("#inputSubtotal").val(monto.toFixed(2));
+				if($("#incluyeIGV").prop("checked")){
+					$("#inputTotal").val(monto.toFixed(2));//coloca el valor sumado en el campo total
+				}else{
+					$("#inputSubtotal").val(monto.toFixed(2));//coloca el valor sumado en el campo subtotal
+				}
 			});
 		}
 		// ./ Suma los precio finales en Total
 	}
-	function sumarIgv(){
-		var subtotal = $("#inputSubtotal").val();//obtenemos el valor del campo Subtotal
-		//verificamos que no este vacio y que no sea 0
-		if (subtotal != '' && subtotal != 0) {
-			var igv = subtotal*18/100;//Regla de 3 para sacar el porcentage del 18%
-			$("#inputIgv").val(igv.toFixed(2));//colocamos el valor obtenido en el campo IGV
+	function Igv(){
+		if($("#inputSubtotal").val() == 0 || $("#inputSubtotal").val()==""){
+			var total=$("#inputTotal").val();//obtenemos el valor del campo total
+			//verificamos que no este vacio y que no sea 0
+			if (total != '' && total != 0) {
+				var igv = total*18/100;//Regla de 3 para sacar el porcentage del 18%
+				$("#inputIgv").val(igv.toFixed(2));//colocamos el valor obtenido en el campo IGV
 
-			var importe = parseFloat(subtotal) + parseFloat(igv);
-			$("#inputTotal").val(importe.toFixed(2));
+				var importe = parseFloat(total) - parseFloat(igv);
+				$("#inputSubtotal").val(importe.toFixed(2));
+			}
+		}else{
+			var subtotal = $("#inputSubtotal").val();//obtenemos el valor del campo Subtotal
+			//verificamos que no este vacio y que no sea 0
+			if (subtotal != '' && subtotal != 0) {
+				var igv = subtotal*18/100;//Regla de 3 para sacar el porcentage del 18%
+				$("#inputIgv").val(igv.toFixed(2));//colocamos el valor obtenido en el campo IGV
+
+				var importe = parseFloat(subtotal) + parseFloat(igv);
+				$("#inputTotal").val(importe.toFixed(2));
+			}
 		}
+
 	}
 
 
@@ -100,7 +117,7 @@ $(document).on('ready',function(){
     	                    swal("Producto Borrado!", "Se ha eliminado el Producto.", "success"); 
     	                	elemento.remove();
     	                	sumarTotales();
-    	                	sumarIgv();
+    	                	Igv();
 		            	});
 		            },
 		            isFirstItemUndeletable: true
@@ -197,7 +214,6 @@ $(document).on('ready',function(){
 		  }
 		});
 	});
-
 	// ./ Comandos para Tabla Documentos
 
 	// Sumar Precios
@@ -206,7 +222,7 @@ $(document).on('ready',function(){
 	var monto, total, inputstotal=$(".row #inputPrecio").length;//obtiene el numero de campos de precio
 		
 	sumarTotales();
-	sumarIgv();
+	Igv();
 
 	//sí, cambia los valores de Cantidad y Precio
 	$(".producto-container").on("load keyup","#inputPrecioUnidad,#inputCantidad",function(){
@@ -224,7 +240,7 @@ $(document).on('ready',function(){
 				// calcular_total();
 
 				sumarTotales();
-				sumarIgv();
+				Igv();
 			}
 
 		});
@@ -233,7 +249,8 @@ $(document).on('ready',function(){
 
 	//incluir IGV
 	$("#incluyeIGV").on("click",function(){
-		if($("#incluyeIGV").prop("checked")){
+		if($(this).prop("checked")){
+			$(this).val("1");
 			var subtotal = $("#inputSubtotal").val();
 			var igv = subtotal*18/100;
 			var nuevoSubtotal=parseFloat(subtotal)-parseFloat(igv);
@@ -241,8 +258,9 @@ $(document).on('ready',function(){
 			$("#inputIgv").val(igv.toFixed(2));
 			$("#inputSubtotal").val(nuevoSubtotal);
 		}else{
+			$(this).val("0");
 			sumarTotales();
-			sumarIgv()
+			Igv();
 		}
 
 	});
