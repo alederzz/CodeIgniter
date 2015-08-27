@@ -37,7 +37,6 @@ $(document).on('ready',function(){
 				$("#inputTotal").val(importe.toFixed(2));
 			}
 		}
-
 	}
 
 
@@ -258,11 +257,50 @@ $(document).on('ready',function(){
 			$("#inputIgv").val(igv.toFixed(2));
 			$("#inputSubtotal").val(nuevoSubtotal);
 		}else{
-			$(this).val("0");
+			$(this).val("1");
 			sumarTotales();
 			Igv();
 		}
 
+	});
+
+	//Comprobar campos antes de guardar
+	$("#enviarDatos").click(function(){
+		//campos
+		var serie=$("#inputSerie").val();
+		var correlativo=$("#inputCorrelativo").val();
+		// var fecha=$("#inputDate").val();
+		// var cliente=$("#inputCliente").val();
+		// var ruc=$("#inputRuc").val();
+		// var direccion=$("#inputDireccion").val();
+		// var precio=$("#inputPrecio").val();
+		if (serie!="" && correlativo!="") {
+			var datos = {
+                "serie" : serie,
+                "correlativo" : correlativo
+            };
+
+			$.ajax({
+				data: datos,
+				url:"facturar/comprobar_correlativo",
+				type:"POST",
+				success: function(response){
+					console.log(response);
+				}
+
+			});
+		};
+
+		$("#content input").each(function(index,value){
+
+			if($(this).val()!="" && $(this).parent().parent().hasClass("has-error")){
+				$(this).parent().parent().removeClass("has-error");
+			}else{
+				if($(this).val() === ""){
+					$(this).parent().parent().addClass("has-error");
+				}
+			}
+		})
 	});
 
 

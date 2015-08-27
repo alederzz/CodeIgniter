@@ -116,7 +116,7 @@
 										<div class="col-md-2">
 											<div class="form-group fg-line">
 												<label for="inputCantidad">Cantidad</label>
-												<input type="text" id="inputCantidad" name="cantidad" class="form-control input-sm" placeholder="Ingrese la cantidad">
+												<input type="text" id="inputCantidad" name="cantidad" class="form-control input-sm" placeholder="Ingrese la cantidad" autocomplete="off" required>
 											</div>
 										</div>
 										<div class="col-md-5">
@@ -128,7 +128,7 @@
 										<div class="col-md-2">
 											<div class="form-group fg-line">
 												<label for="inputPrecioUnidad">Precio Unidad</label>
-												<input type="text" id="inputPrecioUnidad" name="precio_unit" class="form-control input-sm" placeholder="Solo Números">
+												<input type="text" id="inputPrecioUnidad" name="precio_unit" class="form-control input-sm" placeholder="Solo Números" autocomplete="off" required>
 											</div>
 										</div>
 										<div class="col-md-2">
@@ -181,7 +181,7 @@
                                 </div>
 							</div>
 							<div class="row">
-								<button class="btn btn-lg btn-block btn-success waves-effect waves-button waves-float waves-effect waves-button waves-float">Crear Documento</button>
+								<button id="enviarDatos" class="btn btn-lg btn-block btn-success waves-effect waves-button waves-float waves-effect waves-button waves-float">Crear Documento</button>
 							</div>
 						</div>
 					</div>

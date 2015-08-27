@@ -60,6 +60,23 @@ class Facturar extends CI_Controller {
 		$this->Facturar_model->actualizar_factura($id,$estado);
 	}
 
+	//comprobador de correlativo
+	public function comprobar_correlativo(){
+		//recibimos los valores de serie y correltivo
+		$serie=$this->security->xss_clean(strip_tags($this->input->post('serie')));
+		$correlativo=$this->security->xss_clean(strip_tags($this->input->post('correlativo')));
+
+		$valor=$serie.$correlativo;
+		//comprobamos que no se haya registrado otra factura con el mismo numero de correlativo
+		$consulta_serie = $this->Facturar_model->consultar_factura($valor);
+
+		if ($consulta_serie) {
+			echo "TRUE";
+		}else{
+			echo "FALSE";
+		}
+	}
+
 	//Pagina invisible, guardara los datos que se envio del formulario
 	public function guardar_datos_factura(){
 
@@ -89,23 +106,19 @@ class Facturar extends CI_Controller {
 
 		//Comprobamos que los campos necesarios para Factura esten llenos
 		if( isset($tipodoc) && !empty($tipodoc) && isset($idcliente) && !empty($idcliente) && isset($cliente) && !empty($cliente) && isset($fecha) && !empty($fecha) && isset($moneda) && !empty($moneda) 
-			&& isset($serie) && !empty($serie) && isset($correlativo) && !empty($correlativo) && isset($precio_total) && !empty($precio_total) && isset($igv) && !empty($igv)):
+			&& isset($serie) && !empty($serie) && isset($correlativo) && !empty($correlativo) && isset($precio_total) && !empty($precio_total) && isset($igv) ):
 
 			//comprobamos que no se haya registrado otra factura con el mismo numero de correlativo
 			$consulta_serie = $this->Facturar_model->consultar_factura($correlativo);
 
 			//Si no hay el correlativo en la base de datos, la registrará
 			if ($consulta_serie) :
-
 				echo "<h2>Ya se ha registrado este numero de correlativo :(</h2>";
-
 			else:
-
 				$this->Facturar_model->grabar_factura($codigounico, $idcliente, $cliente, $tipodoc, $fecha, $moneda, $serie, $correlativo, $precio_total, $igv);
 				echo "Listo, la factura se guardo<br>";
 				$this->Facturar_model->grabar_producto($codigounico,$array);
 				echo "Se guardo el Producto";
-
 			endif;
 
 		else:
@@ -116,7 +129,7 @@ class Facturar extends CI_Controller {
 		echo $fecha;
 		echo $moneda;
 		echo $idcliente;
-		echo $cliente;
+		echo $cliente."<br> precio";
 		echo $precio_total;
 		echo $direccion."<br/>";
 		echo $ruc."<br/>";

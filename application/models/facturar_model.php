@@ -13,18 +13,15 @@ class Facturar_model extends CI_Model{
 	}
 
 	//Consulta los datos de la tabla de facturacion en la Base de Datos
-	public function consultar_factura($correlativo){
-		$this->db->select('correlativo');
-		$this->db->where('correlativo', $correlativo);
-
+	public function consultar_factura($valor){
+		$this->db->select('id_factura');
+		$this->db->where('id_factura', $valor);
 		$query= $this->db->get('facturacion');
 
 		//si no hay datos de serie en la Base de datos devolvera "nodata"
 		
 		if ($query->num_rows() > 0):
-
-		        return $query->row()->correlativo;
-		    
+		        return true;
 		else:
 			return false;
 		endif;
