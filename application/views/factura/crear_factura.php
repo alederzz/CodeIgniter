@@ -1,7 +1,7 @@
 	<!-- contents -->
 	
 	<div class="row">
-		<form action="<?php echo base_url();?>facturar/guardar_datos_factura" method="post">
+		<form id="formDocument" method="post" action="guardar_datos_factura">
 			<div class="block-header">
 				<h2>Crear Nuevo Documento</h2>
 			</div>
@@ -30,7 +30,7 @@
 								<span class="input-group-addon"><i class="md md-tab"></i></span>
 								<div class="col-md-3 col-xs-3">
 									<div class="fg-line">
-										<input id="inputSerie" type="text" name="serie" class="form-control input-sm" value="001">
+										<input id="inputSerie" type="text" name="serie" class="form-control input-sm" value="001" required>
 									</div>
 								</div>
 								<div class="col-md-9 col-xs-9">
@@ -41,11 +41,11 @@
 							</div>
 						</div>
 						<div class="col-md-3 col-xs-12">
-							<label for="inputDate">Fecha</label>
+							<label class="control-label" for="inputDate">Fecha</label>
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="md md-today"></i></span>
 								<div class="dtp-container dropdown fg-line open">
-									<input id="inputDate" type="text" name="fecha" class="form-control input-sm date-picker" data-toggle="dropdown">
+									<input id="inputDate" type="text" name="fecha" class="form-control input-sm date-picker" data-toggle="dropdown" required>
 								</div>
 							</div>
 						</div>
@@ -71,7 +71,7 @@
 				<div class="card-body card-padding">
 					<div class="row">
 						<div class="col-md-5">
-							<label for="inputCliente">Cliente</label>
+							<label class="control-label" for="inputCliente">Cliente</label>
 							<div class=" input-group form-group">
 								<span class="input-group-addon"><i class="md md-person"></i></span>
 								<div class="fg-line">
@@ -81,7 +81,7 @@
 							</div>
 						</div>
 						<div class="col-md-2">
-							<label for="inputRuc">RUC</label>
+							<label class="control-label" for="inputRuc">RUC</label>
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="md md-dialpad"></i></span>
 								<div class="fg-line">
@@ -90,7 +90,7 @@
 							</div>
 						</div>
 						<div class="col-md-5">
-							<label for="inputDireccion">Dirección</label>
+							<label class="control-label" for="inputDireccion">Dirección</label>
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="md md-place"></i></span>
 								<div class="fg-line">
@@ -115,25 +115,25 @@
 									<div data-repeater-item class="row">
 										<div class="col-md-2">
 											<div class="form-group fg-line">
-												<label for="inputCantidad">Cantidad</label>
+												<label class="control-label" for="inputCantidad">Cantidad</label>
 												<input type="text" id="inputCantidad" name="cantidad" class="form-control input-sm" placeholder="Ingrese la cantidad" autocomplete="off" required>
 											</div>
 										</div>
 										<div class="col-md-5">
 											<div class="form-group fg-line">
-												<label for="inputProducto">Producto</label>
+												<label class="control-label" for="inputProducto">Producto</label>
 												<input type="text" id="inputProducto" name="producto" class="form-control input-sm" placeholder="Escriba el Nombre" required>
 											</div>
 										</div>
 										<div class="col-md-2">
 											<div class="form-group fg-line">
-												<label for="inputPrecioUnidad">Precio Unidad</label>
+												<label class="control-label" for="inputPrecioUnidad">Precio Unidad</label>
 												<input type="text" id="inputPrecioUnidad" name="precio_unit" class="form-control input-sm" placeholder="Solo Números" autocomplete="off" required>
 											</div>
 										</div>
 										<div class="col-md-2">
 											<div class="form-group fg-line">
-												<label for="inputPrecio">Precio</label>
+												<label class="control-label" for="inputPrecio">Precio</label>
 												<input type="text" id="inputPrecio" name="precio" class="form-control input-sm" placeholder="Solo Números" readonly>
 											</div>
 										</div>
@@ -181,7 +181,7 @@
                                 </div>
 							</div>
 							<div class="row">
-								<button id="enviarDatos" class="btn btn-lg btn-block btn-success waves-effect waves-button waves-float waves-effect waves-button waves-float">Crear Documento</button>
+								<button type="button" id="enviarDatos" class="btn btn-lg btn-block btn-success waves-effect waves-button waves-float waves-effect waves-button waves-float">Crear Documento</button>
 							</div>
 						</div>
 					</div>
@@ -189,3 +189,4 @@
 			</div>
 		</form>
 	</div>
+	<div id="resultado"></div>

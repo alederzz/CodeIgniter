@@ -60,23 +60,6 @@ class Facturar extends CI_Controller {
 		$this->Facturar_model->actualizar_factura($id,$estado);
 	}
 
-	//comprobador de correlativo
-	public function comprobar_correlativo(){
-		//recibimos los valores de serie y correltivo
-		$serie=$this->security->xss_clean(strip_tags($this->input->post('serie')));
-		$correlativo=$this->security->xss_clean(strip_tags($this->input->post('correlativo')));
-
-		$valor=$serie.$correlativo;
-		//comprobamos que no se haya registrado otra factura con el mismo numero de correlativo
-		$consulta_serie = $this->Facturar_model->consultar_factura($valor);
-
-		if ($consulta_serie) {
-			echo "TRUE";
-		}else{
-			echo "FALSE";
-		}
-	}
-
 	//Pagina invisible, guardara los datos que se envio del formulario
 	public function guardar_datos_factura(){
 
@@ -104,36 +87,28 @@ class Facturar extends CI_Controller {
 		//Codigo unico de Documentos
 		$codigounico=$serie.$correlativo;
 
+		function mensaje($mensaje,$tipo){
+			return '<div class="alert alert-'.$tipo.' alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                '.$mensaje.'
+                            </div>';
+		}
+
 		//Comprobamos que los campos necesarios para Factura esten llenos
 		if( isset($tipodoc) && !empty($tipodoc) && isset($idcliente) && !empty($idcliente) && isset($cliente) && !empty($cliente) && isset($fecha) && !empty($fecha) && isset($moneda) && !empty($moneda) 
 			&& isset($serie) && !empty($serie) && isset($correlativo) && !empty($correlativo) && isset($precio_total) && !empty($precio_total) && isset($igv) ):
 
-			//comprobamos que no se haya registrado otra factura con el mismo numero de correlativo
-			$consulta_serie = $this->Facturar_model->consultar_factura($correlativo);
-
-			//Si no hay el correlativo en la base de datos, la registrará
-			if ($consulta_serie) :
-				echo "<h2>Ya se ha registrado este numero de correlativo :(</h2>";
-			else:
 				$this->Facturar_model->grabar_factura($codigounico, $idcliente, $cliente, $tipodoc, $fecha, $moneda, $serie, $correlativo, $precio_total, $igv);
 				echo "Listo, la factura se guardo<br>";
 				$this->Facturar_model->grabar_producto($codigounico,$array);
 				echo "Se guardo el Producto";
-			endif;
+
+				$this->session->set_flashdata('document_status', mensaje('Se Guardo el Documento','success'));
+				redirect(base_url("facturar"));
 
 		else:
-			echo "<h2>No Has mandado Datos<br>";
-			echo $tipodoc;
-		echo $serie;
-		echo $correlativo;
-		echo $fecha;
-		echo $moneda;
-		echo $idcliente;
-		echo $cliente."<br> precio";
-		echo $precio_total;
-		echo $direccion."<br/>";
-		echo $ruc."<br/>";
-		echo $igv;
+			$this->session->set_flashdata('document_status', mensaje('Hubo un error al registrar el Documento. Intenta Nuevamente','danger'));
+			redirect(base_url("facturar"));
 		endif;
 	}
 }

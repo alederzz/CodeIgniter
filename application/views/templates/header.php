@@ -378,3 +378,4 @@
             
             <section id="content">
                 <div class="container">
+                <?php echo $this->session->flashdata("document_status"); ?>

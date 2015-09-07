@@ -172,37 +172,37 @@
                 var usuario=$("#inputUser").val();
                 var password=$("#inputPassword").val();
 
-                        var parametros = {
-                                "user" : usuario,
-                                "password" : password
-                        };
-                        $.ajax({
-                                data:  parametros,
-                                url:   'ajax/login',
-                                type:  'post',
-                                beforeSend: function () {
-                                        $("#status").html('<div class="alert alert-info"><i class="md md-spin md-rotate-right"></i> Comprobando Datos..</div>');
-                                },
-                                success:  function (response) {
-                                        if(response === "TRUE"){
-                                            function exito(){
-                                            $("#status").html('<div class="alert alert-success"><i class="md md-check"></i> Estas Logueado</div>');
-                                            }
-                                            window.setTimeout(exito,600);
-                                            function redireccion(){
-                                                location.reload();
-                                            }
-                                            window.setTimeout(redireccion,1200);
-                                        }else{
-                                            if(response === "FALSE"){
-                                                function error(){
-                                                    $("#status").html('<div class="alert alert-danger">El usuario y la contraseña son incorrectos</div>');
-                                                }
-                                                window.setTimeout(error,600);
-                                            }
+                var parametros = {
+                        "user" : usuario,
+                        "password" : password
+                };
+                $.ajax({
+                        data:  parametros,
+                        url:   'ajax/login',
+                        type:  'post',
+                        beforeSend: function () {
+                                $("#status").html('<div class="alert alert-info"><i class="md md-spin md-rotate-right"></i> Comprobando Datos..</div>');
+                        },
+                        success:  function (response) {
+                                if(response === "TRUE"){
+                                    function exito(){
+                                    $("#status").html('<div class="alert alert-success"><i class="md md-check"></i> Estas Logueado</div>');
+                                    }
+                                    window.setTimeout(exito,600);
+                                    function redireccion(){
+                                        location.reload();
+                                    }
+                                    window.setTimeout(redireccion,1200);
+                                }else{
+                                    if(response === "FALSE"){
+                                        function error(){
+                                            $("#status").html('<div class="alert alert-danger">El usuario y la contraseña son incorrectos</div>');
                                         }
+                                        window.setTimeout(error,600);
+                                    }
                                 }
-                        });
+                        }
+                });
 
             });
         });

@@ -189,7 +189,7 @@
                                 </div>
 							</div>
 							<div class="row">
-								<button class="btn btn-lg btn-block btn-success waves-effect waves-button waves-float waves-effect waves-button waves-float">Actualizar</button>
+								<button type="button" id="enviarDatos" class="btn btn-lg btn-block btn-success waves-effect waves-button waves-float waves-effect waves-button waves-float">Actualizar</button>
 							</div>
 						</div>
 					</div>

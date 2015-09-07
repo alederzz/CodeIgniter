@@ -41,7 +41,7 @@ $(document).on('ready',function(){
 
 
 	//Welcome Message (not for login page)
-	function notify(message, type){
+	function notify(message, type, delay){
 	    $.growl({
 	        message: message
 	    },{
@@ -53,10 +53,10 @@ $(document).on('ready',function(){
 	            from: 'top',
 	            align: 'right'
 	        },
-	        delay: 2500,
+	        delay: delay,
 	        animate: {
 	                enter: 'animated bounceIn',
-	                exit: 'animated bounceOut'
+	                exit: 'animated fadeOutUp'
 	        },
 	        offset: {
 	            x: 20,
@@ -66,7 +66,7 @@ $(document).on('ready',function(){
 	};
 	
 	if (!$('.login-content')[0]) {
-	    notify('Welcome back Mallinda Hollaway', 'inverse');
+	    notify('Welcome back Mallinda Hollaway', 'inverse',2500);
 	} 
 
 	//./ Welcome Message (not for login page)
@@ -169,7 +169,7 @@ $(document).on('ready',function(){
 				return "<a href=\"editar/documento/"+row.id+"\" class=\"btn btn-icon command-edit\" data-toggle=\"modal\" data-target=\"#modalWider\" data-row-id=\"" + row.idunico + "\"><span class=\"md md-edit\"></span></a> " + 
 	            "<a class=\"btn btn-icon command-delete"+row.comandos+"\" data-row-id=\"" + row.id + "\"><span class=\"md md-block\"></span></a> " + 
 	            "<a class=\"btn btn-icon command-create\" data-row-id=\"" + row.idunico + "\"><span class=\"md md-remove-red-eye\"></span></a> " +
-	            "<a href=\"reportes\" class=\"btn btn-icon command-print\" data-row-id=\"" + row.idunico + "\"><span class=\"md md-print\"></span></a> ";
+	            "<a href class=\"btn btn-icon command-print\" data-row-id=\"" + row.idunico + "\"><span class=\"md md-print\"></span></a> ";
 	          }
 	    }
 	});
@@ -265,43 +265,59 @@ $(document).on('ready',function(){
 	});
 
 	//Comprobar campos antes de guardar
-	$("#enviarDatos").click(function(){
-		//campos
-		var serie=$("#inputSerie").val();
-		var correlativo=$("#inputCorrelativo").val();
-		// var fecha=$("#inputDate").val();
-		// var cliente=$("#inputCliente").val();
-		// var ruc=$("#inputRuc").val();
-		// var direccion=$("#inputDireccion").val();
-		// var precio=$("#inputPrecio").val();
-		if (serie!="" && correlativo!="") {
-			var datos = {
-                "serie" : serie,
-                "correlativo" : correlativo
-            };
+	$("#enviarDatos").click(function(e){
 
-			$.ajax({
-				data: datos,
-				url:"facturar/comprobar_correlativo",
-				type:"POST",
-				success: function(response){
-					console.log(response);
-				}
+		
 
-			});
-		};
+	    var camposVacios=0;
+	    $('#content input:not([type="hidden"]):not([type="checkbox"]):not([class="checkbox"])').each(function(index,value){
+	    	// Si los campos son diferentes de vacios
+	    	// y diferentes de 0 y si tiene la clase "has-error"
+	    	// le qita el marco rojo de error
+	        if($(this).val()!="" && $(this).val() != "0" && $(this).parents(".form-group").hasClass("has-error")){
+	            $(this).parents(".form-group").removeClass("has-error");//elimina la clase "has-error"
+	        }else{// de lo contrario
+	        	// Si los campos estan vacios
+	        	// y sin son iguales a 0 se añade la clase has error
+	            if($(this).val() === "" || $(this).val() == "0"){
+	            	//agregar la clase has error al contenedor
+	                $(this).parents(".form-group").addClass("has-error");
+	                camposVacios++
+	            }
+	        }
+	    });
+		//Si hay campos vacios emite alerta
+	    if(camposVacios>0){
+	    	notify("Debes llenar todos los campos", "danger", 2500)// ./ Si hay campos vacios emite alert
+	    }else{
+			// comprueba el correlativo
+	    	var serie=$("#inputSerie").val();
+	    	var correlativo=$("#inputCorrelativo").val();
+    	    var datos = {
+    	        "serie" : serie,
+    	        "correlativo" : correlativo
+    	    };
 
-		$("#content input").each(function(index,value){
-
-			if($(this).val()!="" && $(this).parent().parent().hasClass("has-error")){
-				$(this).parent().parent().removeClass("has-error");
-			}else{
-				if($(this).val() === ""){
-					$(this).parent().parent().addClass("has-error");
-				}
-			}
-		})
+    	    $.ajax({
+    	        data:  datos,
+    	        url:   '../ajax/comprobar_correlativo',
+    	        method:  'POST',
+    	        success:  function (response) {
+    	        		if(response === "true"){
+    	        			$("#inputCorrelativo").val(" ");
+    	        			$("#enviarDatos").attr("status","false")//agrega un atributo a el boton enviar
+    	        			notify('Ya se registro este número de factura', 'danger');
+    	        		}else if(response === "false"){
+    	        			$("#formDocument").submit();
+    	        		}
+    	        }
+    	    });
+		    // ./ comprueba el correlativo
+		    
+	    }
+		
 	});
+	//./ Comprobar campos antes de guardar
 
 
 });//fin document on ready

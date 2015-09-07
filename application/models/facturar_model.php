@@ -19,11 +19,10 @@ class Facturar_model extends CI_Model{
 		$query= $this->db->get('facturacion');
 
 		//si no hay datos de serie en la Base de datos devolvera "nodata"
-		
 		if ($query->num_rows() > 0):
-		        return true;
+		    echo "true";
 		else:
-			return false;
+			echo "false";
 		endif;
 
 	}

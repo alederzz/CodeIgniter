@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-08-2015 a las 07:13:46
+-- Tiempo de generación: 07-09-2015 a las 04:58:32
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.5.19
 
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `facturacion` (
   `fecha` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `estado` int(1) NOT NULL,
   `igv` int(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `facturacion`
@@ -98,7 +98,23 @@ INSERT INTO `facturacion` (`id`, `id_factura`, `id_cliente`, `razon_social`, `ti
 (17, 001000032, '111', 'FIna Final', 'Factura', 001, 000032, 'soles', '200.00', '04/08/2015', 1, 0),
 (18, 001000033, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Factura', 001, 000033, 'soles', '80.00', '24/08/2015', 0, 0),
 (19, 001000034, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 001, 000034, 'soles', '160.00', '24/08/2015', 1, 1),
-(20, 001000035, '110', 'Prueba Final', 'Factura', 001, 000035, 'soles', '240.00', '25/08/2015', 1, 1);
+(20, 001000035, '110', 'Prueba Final', 'Factura', 001, 000035, 'soles', '240.00', '25/08/2015', 1, 1),
+(21, 002000050, '111', 'FIna Final', 'Factura', 002, 000050, 'soles', '10.50', '25/08/2015', 1, 1),
+(22, 001456789, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 001, 456789, 'soles', '26.55', '26/08/2015', 1, 0),
+(23, 001564897, '110', 'Prueba Final', 'Factura', 001, 564897, 'soles', '214.76', '26/08/2015', 1, 9),
+(24, 001874521, '114', 'Xyz ozner', 'Factura', 001, 874521, 'soles', '194.46', '26/08/2015', 1, 1),
+(25, 001235689, '113', 'ZTa Ceces Oca', 'Factura', 001, 235689, 'soles', '145.85', '26/08/2015', 1, 0),
+(26, 001142536, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Factura', 001, 142536, 'soles', '14.87', '26/08/2015', 1, 9),
+(27, 001325847, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 001, 325847, 'soles', '14.87', '26/08/2015', 1, 0),
+(28, 001000045, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Factura', 001, 000045, 'soles', '11.33', '06/09/2015', 1, 0),
+(29, 001000038, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 001, 000038, 'soles', '14.87', '06/09/2015', 1, 0),
+(30, 001000039, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Factura', 001, 000039, 'soles', '14.87', '06/09/2015', 1, 0),
+(31, 001000040, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Factura', 001, 000040, 'soles', '14.87', '06/09/2015', 1, 0),
+(32, 001000040, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Factura', 001, 000040, 'soles', '14.87', '06/09/2015', 1, 0),
+(33, 001000041, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Factura', 001, 000041, 'soles', '19.47', '06/09/2015', 1, 0),
+(34, 001000042, '113', 'ZTa Ceces Oca', 'Factura', 001, 000042, 'soles', '885.00', '06/09/2015', 1, 0),
+(35, 001000043, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 001, 000043, 'soles', '40.00', '06/09/2015', 1, 1),
+(36, 001000043, '2', 'Creaciones y Diseños Pepito EIRL', '000043', 001, 000043, 'soles', '40.00', '06/09/2015', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -113,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `items` (
   `cantidad` int(4) NOT NULL,
   `precio_unit` decimal(8,2) NOT NULL,
   `precio` decimal(13,2) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `items`
@@ -149,7 +165,22 @@ INSERT INTO `items` (`id`, `id_factura`, `producto`, `cantidad`, `precio_unit`, 
 (27, 001000032, 'Vidrio', 20, '10.50', '210.00'),
 (28, 001000032, 'Madera', 5, '4.80', '24.00'),
 (29, 001000034, 'Millar, Tarjetas de Presentación en Mate', 2, '80.00', '160.00'),
-(30, 001000035, 'Millares, Tarjetas de Presentación en Mate', 3, '80.00', '240.00');
+(30, 001000035, 'Millares, Tarjetas de Presentación en Mate', 3, '80.00', '240.00'),
+(31, 002000050, 'Unidades de Fotochecks', 3, '3.50', '10.50'),
+(32, 001456789, 'Producto Dos', 5, '4.50', '22.50'),
+(33, 001564897, 'Producto Uno', 4, '45.50', '182.00'),
+(34, 001874521, 'Producto Dos', 4, '41.20', '164.80'),
+(35, 001235689, 'Producto Dos', 3, '41.20', '123.60'),
+(36, 001142536, 'Producto Dos', 3, '4.20', '12.60'),
+(37, 001325847, 'Producto Dos', 3, '4.20', '12.60'),
+(38, 001000045, 'Producto Dos', 3, '3.20', '9.60'),
+(39, 001000038, 'Producto Dos', 3, '4.20', '12.60'),
+(40, 001000039, 'Producto Tres', 3, '4.20', '12.60'),
+(41, 001000040, 'Producto Dos', 3, '4.20', '12.60'),
+(42, 001000040, 'Producto Dos', 3, '4.20', '12.60'),
+(43, 001000041, 'Producto Uno', 3, '5.50', '16.50'),
+(44, 001000042, 'Ladrillos', 5, '150.00', '750.00'),
+(45, 001000043, 'Metales', 4, '10.00', '40.00');
 
 -- --------------------------------------------------------
 
@@ -270,12 +301,12 @@ MODIFY `id` int(150) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=115;
 -- AUTO_INCREMENT de la tabla `facturacion`
 --
 ALTER TABLE `facturacion`
-MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT de la tabla `items`
 --
 ALTER TABLE `items`
-MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=46;
 --
 -- AUTO_INCREMENT de la tabla `login`
 --
