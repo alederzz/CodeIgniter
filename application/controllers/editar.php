@@ -8,7 +8,14 @@ class Editar extends CI_Controller {
 	}
 
 	public function index(){
-		redirect(base_url());;
+			function mensaje($mensaje,$tipo){
+				return '<div class="alert alert-'.$tipo.' alert-dismissible" role="alert">
+	                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+	                                '.$mensaje.'
+	                            </div>';
+			}
+		$this->session->set_flashdata("document_status",mensaje("Debes editar un documento","warning"));
+		redirect(base_url("facturar"));
 	}
 	public function documento(){
 		if (!$this->session->userdata('login') || $this->uri->segment(3) == FALSE):
