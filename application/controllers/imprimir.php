@@ -5,6 +5,7 @@ class Imprimir extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Facturar_model');
 		$this->load->model('Inventario_model');
+		$this->load->helper("numeros");
 	}
 
 	public function index(){

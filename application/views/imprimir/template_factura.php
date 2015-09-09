@@ -71,7 +71,8 @@
 		<div class="razon"><?php echo $valores->razon_social;?></div>
 		<div class="ruc">20527372144</div>
 		<div class="direccion">Av. Angamos Este Nro. 176 Miraflores - Lima - Lima</div>
-		<div class="cantidad">3</div>
+		<div class="cantidad"><?php echo num_to_letras("1935.00")?></div>
+
 	</div>
 	
 </body>
