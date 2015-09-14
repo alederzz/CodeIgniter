@@ -87,13 +87,6 @@ class Facturar extends CI_Controller {
 		//Codigo unico de Documentos
 		$codigounico=$serie.$correlativo;
 
-		function mensaje($mensaje,$tipo){
-			return '<div class="alert alert-'.$tipo.' alert-dismissible" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                '.$mensaje.'
-                            </div>';
-		}
-
 		//Comprobamos que los campos necesarios para Factura esten llenos
 		if( isset($tipodoc) && !empty($tipodoc) && isset($idcliente) && !empty($idcliente) && isset($cliente) && !empty($cliente) && isset($fecha) && !empty($fecha) && isset($moneda) && !empty($moneda) 
 			&& isset($serie) && !empty($serie) && isset($correlativo) && !empty($correlativo) && isset($precio_total) && !empty($precio_total) && isset($igv) ):
