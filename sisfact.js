@@ -168,12 +168,24 @@ $(document).on('ready',function(){
 			"comandos": function(column, row) {
 				return "<a href=\"editar/documento/"+row.id+"\" class=\"btn btn-icon command-edit\" data-toggle=\"modal\" data-target=\"#modalWider\" data-row-id=\"" + row.idunico + "\"><span class=\"md md-edit\"></span></a> " + 
 	            "<a class=\"btn btn-icon command-delete"+row.comandos+"\" data-row-id=\"" + row.id + "\"><span class=\"md md-block\"></span></a> " + 
-	            "<a class=\"btn btn-icon command-create\" data-row-id=\"" + row.idunico + "\"><span class=\"md md-remove-red-eye\"></span></a> " +
+	            "<a data-view=\"imprimir/factura/"+row.id+"\" class=\"btn btn-icon command-view\" data-row-id=\"" + row.idunico + "\"><span class=\"md md-remove-red-eye\"></span></a> " +
 	            "<a href=\"imprimir/factura/"+row.id+"\" target=\"_blank\" class=\"btn btn-icon command-print\" data-row-id=\"" + row.idunico + "\"><span class=\"md md-print\"></span></a> ";
 	          }
 	    }
 	});
-	$("#data-table-command-docs tbody").on("click","a.command-delete",function(){
+
+	//abrir pop}up vista previa
+	$("#data-table-command-docs tbody").on("click","a.command-view",function(){
+		var url=$(this).attr("data-view");
+		$('#modalWider').on('show.bs.modal', function () {
+			$('#modalWider iframe').attr("src",url);
+			$('#modalWider a').attr("href",url);
+		});
+		$('#modalWider').modal({show:true});
+	});
+	// ./abrir pop}up vista previa
+
+	$("#data-table-command-docs tbody").on("click","a.command-delete",function(){//anular documentoss
 		var btn=$(this);
 		$.ajax({
 		  url: 'facturar/anular_doc',

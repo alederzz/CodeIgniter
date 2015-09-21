@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-09-2015 a las 04:58:32
+-- Tiempo de generación: 21-09-2015 a las 01:55:17
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.5.19
 
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `facturacion` (
   `fecha` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `estado` int(1) NOT NULL,
   `igv` int(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `facturacion`
@@ -114,7 +114,9 @@ INSERT INTO `facturacion` (`id`, `id_factura`, `id_cliente`, `razon_social`, `ti
 (33, 001000041, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Factura', 001, 000041, 'soles', '19.47', '06/09/2015', 1, 0),
 (34, 001000042, '113', 'ZTa Ceces Oca', 'Factura', 001, 000042, 'soles', '885.00', '06/09/2015', 1, 0),
 (35, 001000043, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 001, 000043, 'soles', '40.00', '06/09/2015', 1, 1),
-(36, 001000043, '2', 'Creaciones y Diseños Pepito EIRL', '000043', 001, 000043, 'soles', '40.00', '06/09/2015', 1, 0);
+(36, 001000043, '2', 'Creaciones y Diseños Pepito EIRL', '000043', 001, 000043, 'soles', '40.00', '06/09/2015', 1, 0),
+(37, 003000040, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 003, 000040, 'soles', '380.00', '13/09/2015', 1, 1),
+(38, 002000015, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 002, 000015, 'soles', '135.00', '13/09/2015', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -129,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `items` (
   `cantidad` int(4) NOT NULL,
   `precio_unit` decimal(8,2) NOT NULL,
   `precio` decimal(13,2) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `items`
@@ -180,7 +182,11 @@ INSERT INTO `items` (`id`, `id_factura`, `producto`, `cantidad`, `precio_unit`, 
 (42, 001000040, 'Producto Dos', 3, '4.20', '12.60'),
 (43, 001000041, 'Producto Uno', 3, '5.50', '16.50'),
 (44, 001000042, 'Ladrillos', 5, '150.00', '750.00'),
-(45, 001000043, 'Metales', 4, '10.00', '40.00');
+(45, 001000043, 'Metales', 4, '10.00', '40.00'),
+(46, 003000040, 'Pantalones Talla 33', 3, '30.00', '90.00'),
+(47, 003000040, 'Polos Talla L', 4, '25.00', '100.00'),
+(48, 003000040, 'Zapatillas Talla 41', 2, '95.00', '190.00'),
+(49, 002000015, 'Chompas', 3, '45.00', '135.00');
 
 -- --------------------------------------------------------
 
@@ -238,15 +244,18 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 `id` int(200) NOT NULL,
   `usuario` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
   `password` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
-  `email` varchar(200) COLLATE utf8_spanish_ci NOT NULL
+  `email` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `rol` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `nombre` text COLLATE utf8_spanish_ci NOT NULL,
+  `avatar_uri` text COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `usuario`, `password`, `email`) VALUES
-(1, 'demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 'ikarus_94@hotmail.com');
+INSERT INTO `usuarios` (`id`, `usuario`, `password`, `email`, `rol`, `nombre`, `avatar_uri`) VALUES
+(1, 'admin', 'fe01ce2a7fbac8fafaed7c982a04e229', 'ikarus_94@hotmail.com', 'administrador', 'Admin', '');
 
 --
 -- Índices para tablas volcadas
@@ -301,12 +310,12 @@ MODIFY `id` int(150) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=115;
 -- AUTO_INCREMENT de la tabla `facturacion`
 --
 ALTER TABLE `facturacion`
-MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=37;
+MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT de la tabla `items`
 --
 ALTER TABLE `items`
-MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=46;
+MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT de la tabla `login`
 --

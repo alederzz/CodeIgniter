@@ -2024,7 +2024,7 @@ div.fc-row {
 .command-edit,
 .command-delete,
 .command-print,
-.command-create {
+.command-view {
   background: #fff;
   border: 1px solid #eee !important;
 }
@@ -2047,7 +2047,7 @@ div.fc-row {
   color: white;
   border: 1px solid #fff!important;
 }
-.command-create:hover{
+.command-view:hover{
   background: #4CAF50;
   color: white;
   border: 1px solid #fff !important;

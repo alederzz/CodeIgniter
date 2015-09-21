@@ -10,10 +10,10 @@
 		margin: 0;
 	}
 	body {
-		font-size: 10.9pt; font-family: consolas; background: #e3e3e3;
+		font-size: 10.9pt; font-family: Courier; background: #e3e3e3;padding-top: 0;
 	}
 	.main{
-		position: relative; width: 816px; height: 624px; margin: 0 auto; background: url(bgfactura.jpg) no-repeat; background-size: cover;
+		position: relative; width: 816px; height: 624px; margin: 0 auto; background: url(<?php echo base_url("img");?>/bgfactura.jpg) no-repeat; background-size: cover;
 	}
 	.numero-factura{
 		position: absolute; top: 151px; left: 70%;
@@ -25,7 +25,7 @@
 		position: absolute; top: 183px; left: 19%;
 	}
 	.ano{
-		position: absolute; top: 183px; left: 40%;
+		position: absolute; top: 183px; left: 38%;
 	}
 	.razon{
 		position: absolute; top: 207px; left: 14%;
