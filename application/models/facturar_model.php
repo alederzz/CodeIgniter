@@ -26,14 +26,11 @@ class Facturar_model extends CI_Model{
 		endif;
 
 	}
-
-	public function actualizar_factura($id,$estado){
-		$data = array(
-		               'estado' => $estado
-		            );
+	//Se utiliza en editar documento
+	public function actualizar_documento($id,$datos){
 
 		$this->db->where('id', $id);
-		$this->db->update('facturacion', $data); 
+		$this->db->update('facturacion', $datos); 
 	}
 
 	public function obtener_datos($id){
@@ -49,19 +46,21 @@ class Facturar_model extends CI_Model{
 	}
 
 	//Graba los datos de faturacion en la Base de Datos
-	public function grabar_factura($codigounico, $idcliente, $cliente, $tipodoc, $fecha, $moneda, $serie, $correlativo, $precio_total, $igv){
+	public function grabar_factura($codigounico, $idcliente, $cliente, $tipodoc, $fechaEmision, $fechaCancelacion, $tipopago, $moneda, $serie, $correlativo, $precio_total, $igv){
 		$datos = array(
-			'id_factura'	=> $codigounico,
-			'id_cliente'	=> $idcliente,
-			'razon_social' 	=> $cliente,
-			'tipo_documento'=> $tipodoc,
-			'serie'			=> $serie,
-			'correlativo' 	=> $correlativo,
-			'fecha'			=> $fecha,
-			'moneda'		=> $moneda,
-			'monto'			=> $precio_total,
-			'estado'		=> "1",
-			'igv'			=> $igv
+			'id_factura'		=> $codigounico,
+			'id_cliente'		=> $idcliente,
+			'razon_social' 		=> $cliente,
+			'tipo_documento'	=> $tipodoc,
+			'serie'				=> $serie,
+			'correlativo' 		=> $correlativo,
+			'fecha_emision'		=> $fechaEmision,
+			'fecha_cancelacion'	=> $fechaCancelacion,
+			'tipo_pago'			=> $tipopago,
+			'moneda'			=> $moneda,
+			'monto'				=> $precio_total,
+			'estado'			=> "1",
+			'igv'				=> $igv
 			 );
 
 		$this->db->insert('facturacion',$datos);

@@ -1,9 +1,9 @@
 	<!-- contents -->
 	
 	<div class="row">
-		<form action="<?php echo base_url();?>facturar/guardar_datos_factura" method="post">
+		<form id="formDocument" action="<?php echo base_url();?>facturar/actualizar_documento/<?php echo $valores->id;?>" method="post">
 			<div class="block-header">
-				<h2>Crear Nuevo Documento</h2>
+				<h2>Editar Documento</h2>
 			</div>
 			<div class="card">
 				<div class="card-header bgm-cyan m-b-20">
@@ -11,13 +11,13 @@
 				</div>
 				<div class="card-body card-padding">
 					<div class="row">
-						<div class="col-md-3 col-xs-12">
+						<div class="col-md-2 col-xs-12">
 							<label for="inputTipoDoc">Tipo de Documento</label>
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="md md-assignment"></i></span>
 								<div class="fg-line select">
 									<select id="inputTipoDoc" type="text" name="tipodoc" class="form-control input-sm" required>
-										<option value="<?php echo $valores->correlativo;?>" selected><?php echo $valores->tipo_documento;?></option>
+										<option value="<?php echo $valores->tipo_documento;?>" selected><?php echo $valores->tipo_documento;?></option>
 										<option value="Factura">Factura</option>
 										<option value="Boleta">Boleta</option>
 										<option value="Guía de Remisión">Guía de Remisión</option>
@@ -42,23 +42,43 @@
 							</div>
 						</div>
 						<div class="col-md-3 col-xs-12">
-							<label for="inputDate">Fecha</label>
+							<label for="inputDate">Fecha de Emision</label> - <label for="inputDateC">Cancelación</label>
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="md md-today"></i></span>
-								<div class="dtp-container dropdown fg-line open">
-									<input id="inputDate" type="text" name="fecha" class="form-control input-sm date-picker" data-toggle="dropdown" value="<?php echo $valores->fecha;?>">
+								<div class="col-md-6 col-xs-6">
+									<div class="dtp-container dropdown fg-line open">
+										<input id="inputDate" type="text" name="fechaEmision" class="form-control input-sm date-picker" data-toggle="dropdown" value="<?php echo $valores->fecha_emision;?>" required>
+									</div>
+								</div>
+								<div class="col-md-6 col-xs-6">
+									<div class="dtp-container dropdown fg-line open">
+										<input id="inputDateC" type="text" name="fechaCancelacion" class="form-control input-sm date-picker" data-toggle="dropdown" value="<?php echo $valores->fecha_cancelacion;?>" required>
+									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-md-3 col-xd-12">
+						<div class="col-md-2 col-xd-12">
 							<label for="inputMoneda">Moneda</label>
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="md md-attach-money"></i></span>
 								<div class="fg-line select">
 									<select id="inputMoneda" type="text" name="moneda" class="form-control input-sm" required>
 										<option value="<?php echo $valores->moneda;?>" selected><?php echo $valores->moneda;?></option>
-										<option value="soles" selected>Soles</option>
-										<option value="dolares">Dólares</option>
+										<option value="Soles" selected>Soles</option>
+										<option value="Dolares">Dólares</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-xs-12">
+							<label for="inputTipoPago">Tipo de Pago</label>
+							<div class="input-group form-group">
+								<span class="input-group-addon"><i class="md md-assignment"></i></span>
+								<div class="fg-line select">
+									<select id="inputTipoPago" type="text" name="tipopago" class="form-control input-sm" required>
+										<option value="<?php echo $valores->tipo_pago;?>" selected><?php echo $valores->tipo_pago;?></option>
+										<option value="Contado">Contado</option>
+										<option value="Crédito">Crédito</option>
 									</select>
 								</div>
 							</div>
@@ -189,7 +209,7 @@
                                 </div>
 							</div>
 							<div class="row">
-								<button type="button" id="enviarDatos" class="btn btn-lg btn-block btn-success waves-effect waves-button waves-float waves-effect waves-button waves-float">Actualizar</button>
+								<button type="button" id="actualizarDatos" class="btn btn-lg btn-block btn-success waves-effect waves-button waves-float waves-effect waves-button waves-float">Actualizar</button>
 							</div>
 						</div>
 					</div>

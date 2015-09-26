@@ -11,7 +11,7 @@
 				</div>
 				<div class="card-body card-padding">
 					<div class="row">
-						<div class="col-md-3 col-xs-12">
+						<div class="col-md-2 col-xs-12">
 							<label for="inputTipoDoc">Tipo de Documento</label>
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="md md-assignment"></i></span>
@@ -25,7 +25,7 @@
 							</div>
 						</div>
 						<div class="col-md-3 col-xs-12">
-							<label for="inputSerie">Serie - Correlativo</label>
+							<label for="inputSerie">Serie</label> - <label for="inputCorrelativo">Correlativo</label>
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="md md-tab"></i></span>
 								<div class="col-md-3 col-xs-3">
@@ -41,15 +41,22 @@
 							</div>
 						</div>
 						<div class="col-md-3 col-xs-12">
-							<label class="control-label" for="inputDate">Fecha</label>
+							<label for="inputDate">Fecha de Emision</label> - <label for="inputDateC">Cancelación</label>
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="md md-today"></i></span>
-								<div class="dtp-container dropdown fg-line open">
-									<input id="inputDate" type="text" name="fecha" class="form-control input-sm date-picker" data-toggle="dropdown" required>
+								<div class="col-md-6 col-xs-6">
+									<div class="dtp-container dropdown fg-line open">
+										<input id="inputDate" type="text" name="fechaEmision" class="form-control input-sm date-picker" data-toggle="dropdown" required>
+									</div>
+								</div>
+								<div class="col-md-6 col-xs-6">
+									<div class="dtp-container dropdown fg-line open">
+										<input id="inputDateC" type="text" name="fechaCancelacion" class="form-control input-sm date-picker" data-toggle="dropdown" required>
+									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-md-3 col-xd-12">
+						<div class="col-md-2 col-xs-12">
 							<label for="inputMoneda">Moneda</label>
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="md md-attach-money"></i></span>
@@ -57,6 +64,18 @@
 									<select id="inputMoneda" type="text" name="moneda" class="form-control input-sm" required>
 										<option value="soles" selected>Soles</option>
 										<option value="dolares">Dólares</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-xs-12">
+							<label for="inputTipoPago">Tipo de Pago</label>
+							<div class="input-group form-group">
+								<span class="input-group-addon"><i class="md md-assignment"></i></span>
+								<div class="fg-line select">
+									<select id="inputTipoPago" type="text" name="tipopago" class="form-control input-sm" required>
+										<option value="Contado" selected>Contado</option>
+										<option value="Crédito">Crédito</option>
 									</select>
 								</div>
 							</div>

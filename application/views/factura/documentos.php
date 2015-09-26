@@ -85,7 +85,7 @@
 							<td><?php echo $columna->id_cliente; ?></td>
 							<td><?php echo $columna->razon_social; ?></td>
 							<td><?php echo $columna->monto; ?></td>
-							<td><?php echo $columna->fecha; ?></td>
+							<td><?php echo $columna->fecha_emision; ?></td>
 							<td><?php echo ($columna->estado == 0) ? "-active":"";  ?></td>
 						</tr>
 					<?php endforeach?>

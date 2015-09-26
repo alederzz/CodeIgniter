@@ -277,7 +277,7 @@ $(document).on('ready',function(){
 	});
 
 	//Comprobar campos antes de guardar
-	$("#enviarDatos").click(function(e){
+	$("#enviarDatos,#actualizarDatos").click(function(e){
 
 		
 
@@ -301,7 +301,7 @@ $(document).on('ready',function(){
 		//Si hay campos vacios emite alerta
 	    if(camposVacios>0){
 	    	notify("Debes llenar todos los campos", "danger", 2500)// ./ Si hay campos vacios emite alert
-	    }else{
+	    }else if($(this).attr("id")=="enviarDatos"){
 			// comprueba el correlativo
 	    	var serie=$("#inputSerie").val();
 	    	var correlativo=$("#inputCorrelativo").val();
@@ -326,6 +326,8 @@ $(document).on('ready',function(){
     	    });
 		    // ./ comprueba el correlativo
 		    
+	    }else if($(this).attr("id")=="actualizarDatos"){
+	    	$("#formDocument").submit();
 	    }
 		
 	});
