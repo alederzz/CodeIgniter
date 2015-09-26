@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-09-2015 a las 01:55:17
+-- Tiempo de generación: 26-09-2015 a las 07:49:06
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.5.19
 
@@ -70,53 +70,57 @@ CREATE TABLE IF NOT EXISTS `facturacion` (
   `correlativo` int(6) unsigned zerofill NOT NULL,
   `moneda` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `monto` text COLLATE utf8_spanish_ci NOT NULL,
-  `fecha` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha_emision` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha_cancelacion` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `tipo_pago` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `estado` int(1) NOT NULL,
   `igv` int(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `facturacion`
 --
 
-INSERT INTO `facturacion` (`id`, `id_factura`, `id_cliente`, `razon_social`, `tipo_documento`, `serie`, `correlativo`, `moneda`, `monto`, `fecha`, `estado`, `igv`) VALUES
-(1, 001000013, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 001, 000013, 'soles', '20.00', '29/07/2015', 0, 0),
-(2, 001000014, '112', 'Agencia Uando', 'Boleta', 001, 000014, 'soles', '25.00', '29/07/2015', 1, 0),
-(3, 001000015, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Boleta', 001, 000015, 'soles', '50.00', '29/07/2015', 0, 0),
-(4, 001000016, '110', 'Prueba Final', 'Factura', 001, 000016, 'soles', '50.00', '29/07/2015', 1, 0),
-(5, 001000017, '113', 'ZTa Ceces Oca', 'Guía de Remision', 002, 000017, 'soles', '10', '29/07/2015', 1, 0),
-(6, 000100004, '114', 'Xyz ozner', 'Boleta', 001, 000004, 'soles', '6.00', '15/07/2015', 1, 0),
-(7, 000000118, '2', 'Creaciones y Diseños Pepito EIRL', 'Guía de Remisión', 001, 000018, 'soles', '10.50', '31/07/2015', 1, 0),
-(8, 010000045, '110', 'Prueba Final', 'Factura', 001, 000045, 'soles', '150.00', '02/08/2015', 1, 0),
-(9, 001000024, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Factura', 001, 000024, 'soles', '300.00', '04/08/2015', 0, 0),
-(10, 001000025, '110', 'Prueba Final', 'Factura', 001, 000025, 'soles', '300.00', '04/08/2015', 1, 0),
-(12, 001000026, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 001, 000026, 'soles', '300.00', '04/08/2015', 0, 0),
-(13, 001000028, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 001, 000028, 'soles', '300.00', '04/08/2015', 0, 0),
-(14, 001000029, '110', 'Prueba Final', 'Factura', 001, 000029, 'soles', '300.00', '04/08/2015', 1, 0),
-(15, 001000030, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Factura', 001, 000030, 'soles', '300.00', '04/08/2015', 1, 0),
-(16, 001000031, '111', 'FIna Final', 'Factura', 001, 000031, 'soles', '150.00', '04/08/2015', 1, 0),
-(17, 001000032, '111', 'FIna Final', 'Factura', 001, 000032, 'soles', '200.00', '04/08/2015', 1, 0),
-(18, 001000033, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Factura', 001, 000033, 'soles', '80.00', '24/08/2015', 0, 0),
-(19, 001000034, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 001, 000034, 'soles', '160.00', '24/08/2015', 1, 1),
-(20, 001000035, '110', 'Prueba Final', 'Factura', 001, 000035, 'soles', '240.00', '25/08/2015', 1, 1),
-(21, 002000050, '111', 'FIna Final', 'Factura', 002, 000050, 'soles', '10.50', '25/08/2015', 1, 1),
-(22, 001456789, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 001, 456789, 'soles', '26.55', '26/08/2015', 1, 0),
-(23, 001564897, '110', 'Prueba Final', 'Factura', 001, 564897, 'soles', '214.76', '26/08/2015', 1, 9),
-(24, 001874521, '114', 'Xyz ozner', 'Factura', 001, 874521, 'soles', '194.46', '26/08/2015', 1, 1),
-(25, 001235689, '113', 'ZTa Ceces Oca', 'Factura', 001, 235689, 'soles', '145.85', '26/08/2015', 1, 0),
-(26, 001142536, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Factura', 001, 142536, 'soles', '14.87', '26/08/2015', 1, 9),
-(27, 001325847, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 001, 325847, 'soles', '14.87', '26/08/2015', 1, 0),
-(28, 001000045, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Factura', 001, 000045, 'soles', '11.33', '06/09/2015', 1, 0),
-(29, 001000038, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 001, 000038, 'soles', '14.87', '06/09/2015', 1, 0),
-(30, 001000039, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Factura', 001, 000039, 'soles', '14.87', '06/09/2015', 1, 0),
-(31, 001000040, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Factura', 001, 000040, 'soles', '14.87', '06/09/2015', 1, 0),
-(32, 001000040, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Factura', 001, 000040, 'soles', '14.87', '06/09/2015', 1, 0),
-(33, 001000041, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Factura', 001, 000041, 'soles', '19.47', '06/09/2015', 1, 0),
-(34, 001000042, '113', 'ZTa Ceces Oca', 'Factura', 001, 000042, 'soles', '885.00', '06/09/2015', 1, 0),
-(35, 001000043, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 001, 000043, 'soles', '40.00', '06/09/2015', 1, 1),
-(36, 001000043, '2', 'Creaciones y Diseños Pepito EIRL', '000043', 001, 000043, 'soles', '40.00', '06/09/2015', 1, 0),
-(37, 003000040, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 003, 000040, 'soles', '380.00', '13/09/2015', 1, 1),
-(38, 002000015, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 002, 000015, 'soles', '135.00', '13/09/2015', 0, 1);
+INSERT INTO `facturacion` (`id`, `id_factura`, `id_cliente`, `razon_social`, `tipo_documento`, `serie`, `correlativo`, `moneda`, `monto`, `fecha_emision`, `fecha_cancelacion`, `tipo_pago`, `estado`, `igv`) VALUES
+(1, 001000013, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 001, 000013, 'soles', '20.00', '29/07/2015', '', '', 0, 0),
+(2, 001000014, '112', 'Agencia Uando', 'Boleta', 001, 000014, 'soles', '25.00', '29/07/2015', '', '', 1, 0),
+(3, 001000015, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Boleta', 001, 000015, 'soles', '50.00', '29/07/2015', '', '', 0, 0),
+(4, 001000016, '110', 'Prueba Final', 'Factura', 001, 000016, 'soles', '50.00', '29/07/2015', '', '', 1, 0),
+(5, 001000017, '113', 'ZTa Ceces Oca', 'Guía de Remision', 002, 000017, 'soles', '10', '29/07/2015', '', '', 1, 0),
+(6, 000100004, '114', 'Xyz ozner', 'Boleta', 001, 000004, 'soles', '6.00', '15/07/2015', '', '', 1, 0),
+(7, 000000118, '2', 'Creaciones y Diseños Pepito EIRL', 'Guía de Remisión', 001, 000018, 'soles', '10.50', '31/07/2015', '', '', 1, 0),
+(8, 010000045, '110', 'Prueba Final', 'Factura', 001, 000045, 'soles', '150.00', '02/08/2015', '', '', 1, 0),
+(9, 001000024, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Factura', 001, 000024, 'soles', '300.00', '04/08/2015', '', '', 0, 0),
+(10, 001000025, '110', 'Prueba Final', 'Factura', 001, 000025, 'soles', '300.00', '04/08/2015', '', '', 1, 0),
+(12, 001000026, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 001, 000026, 'soles', '300.00', '04/08/2015', '', '', 0, 0),
+(13, 001000028, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 001, 000028, 'soles', '300.00', '04/08/2015', '', '', 0, 0),
+(14, 001000029, '110', 'Prueba Final', 'Factura', 001, 000029, 'soles', '300.00', '04/08/2015', '', '', 1, 0),
+(15, 001000030, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Factura', 001, 000030, 'soles', '300.00', '04/08/2015', '', '', 1, 0),
+(16, 001000031, '111', 'FIna Final', 'Factura', 001, 000031, 'soles', '150.00', '04/08/2015', '', '', 1, 0),
+(17, 001000032, '111', 'FIna Final', 'Factura', 001, 000032, 'soles', '200.00', '04/08/2015', '', '', 1, 0),
+(18, 001000033, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Factura', 001, 000033, 'soles', '80.00', '24/08/2015', '', '', 0, 0),
+(19, 001000034, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 001, 000034, 'soles', '160.00', '24/08/2015', '', '', 1, 1),
+(20, 001000035, '110', 'Prueba Final', 'Factura', 001, 000035, 'soles', '240.00', '25/08/2015', '', '', 1, 1),
+(21, 002000050, '111', 'FIna Final', 'Factura', 002, 000050, 'soles', '10.50', '25/08/2015', '', '', 1, 1),
+(22, 001456789, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 001, 456789, 'soles', '26.55', '26/08/2015', '', '', 1, 0),
+(23, 001564897, '110', 'Prueba Final', 'Factura', 001, 564897, 'soles', '214.76', '26/08/2015', '', '', 1, 9),
+(24, 001874521, '114', 'Xyz ozner', 'Factura', 001, 874521, 'soles', '194.46', '26/08/2015', '', '', 1, 1),
+(25, 001235689, '113', 'ZTa Ceces Oca', 'Factura', 001, 235689, 'soles', '145.85', '26/08/2015', '', '', 1, 0),
+(26, 001142536, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Factura', 001, 142536, 'soles', '14.87', '26/08/2015', '', '', 1, 9),
+(27, 001325847, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 001, 325847, 'soles', '14.87', '26/08/2015', '', '', 1, 0),
+(28, 001000045, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Guía de Remisión', 001, 000045, 'Soles', '9.60', '06/09/2015', '02/10/2015', 'Crédito', 1, 1),
+(29, 001000038, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 001, 000038, 'soles', '14.87', '06/09/2015', '', '', 1, 0),
+(30, 001000039, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Factura', 001, 000039, 'soles', '14.87', '06/09/2015', '', '', 1, 0),
+(31, 001000040, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Factura', 001, 000040, 'soles', '14.87', '06/09/2015', '', '', 1, 0),
+(32, 001000040, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Factura', 001, 000040, 'soles', '14.87', '06/09/2015', '', '', 1, 0),
+(33, 001000041, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Factura', 001, 000041, 'soles', '19.47', '06/09/2015', '', '', 1, 0),
+(34, 001000042, '113', 'ZTa Ceces Oca', 'Factura', 001, 000042, 'soles', '885.00', '06/09/2015', '', '', 1, 0),
+(35, 001000043, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 001, 000043, 'soles', '40.00', '06/09/2015', '', '', 1, 1),
+(36, 001000043, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 001, 000043, 'Soles', '40.00', '06/09/2015', '26/09/2015', 'Crédito', 1, 1),
+(37, 003000040, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 003, 000040, 'soles', '380.00', '13/09/2015', '', '', 1, 1),
+(38, 002000015, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 002, 000015, 'soles', '135.00', '13/09/2015', '', '', 1, 1),
+(39, 000000000, '2', 'Creaciones y Diseños Pepito EIRL', 'Factura', 002, 000014, 'Soles', '12.00', '25/09/2015', '25/09/2015', 'Crédito', 1, 0),
+(40, 003000016, '1', 'Desarrollo de Softawre y Sitios Web SAC', 'Boleta', 003, 000016, 'Soles', '14.16', '25/09/2015', '01/10/2015', 'Crédito', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -131,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `items` (
   `cantidad` int(4) NOT NULL,
   `precio_unit` decimal(8,2) NOT NULL,
   `precio` decimal(13,2) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `items`
@@ -186,7 +190,10 @@ INSERT INTO `items` (`id`, `id_factura`, `producto`, `cantidad`, `precio_unit`, 
 (46, 003000040, 'Pantalones Talla 33', 3, '30.00', '90.00'),
 (47, 003000040, 'Polos Talla L', 4, '25.00', '100.00'),
 (48, 003000040, 'Zapatillas Talla 41', 2, '95.00', '190.00'),
-(49, 002000015, 'Chompas', 3, '45.00', '135.00');
+(49, 002000015, 'Chompas', 3, '45.00', '135.00'),
+(50, 002000014, 'Producto Cinco', 3, '4.00', '12.00'),
+(51, 003000016, 'Producto Seis', 3, '4.00', '12.00'),
+(52, 002000018, 'Producto Cinco', 3, '5.00', '15.00');
 
 -- --------------------------------------------------------
 
@@ -310,12 +317,12 @@ MODIFY `id` int(150) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=115;
 -- AUTO_INCREMENT de la tabla `facturacion`
 --
 ALTER TABLE `facturacion`
-MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
+MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
 --
 -- AUTO_INCREMENT de la tabla `items`
 --
 ALTER TABLE `items`
-MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
+MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
 --
 -- AUTO_INCREMENT de la tabla `login`
 --
