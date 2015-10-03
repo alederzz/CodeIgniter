@@ -129,7 +129,8 @@ $(document).on('ready',function(){
 		labels: {
 		        search: "Buscar",
 		        infos: "Mostrando {{ctx.start}} a {{ctx.end}} de {{ctx.total}} elementos",
-		        all: "Todos"
+		        all: "Todos",
+		        noResults: "No se encontraron resultados"
 		},
 		css: {
 			icon: 'md icon',
@@ -155,7 +156,8 @@ $(document).on('ready',function(){
 		labels: {
 		        search: "Buscar",
 		        infos: "Mostrando {{ctx.start}} a {{ctx.end}} de {{ctx.total}} elementos",
-		        all: "Todos"
+		        all: "Todos",
+		        noResults: "No se encontraron resultados"
 		},
 		css: {
 			icon: 'md icon',

@@ -27,3 +27,24 @@ function mensaje($mensaje,$tipo){
                         '.$mensaje.'
                     </div>';
 }
+
+function user_data($valor){
+
+	$CI =& get_instance();
+	$user=$CI->session->userdata('login');
+
+	switch ($valor) {
+		case 'usuario':
+			$CI->db->where('usuario',$user);
+			$consulta= $CI->db->get('usuarios');
+			return $consulta->row('nombre');
+			break;
+
+		case 'avatar':
+			$CI->db->where('usuario',$user);
+			$consulta= $CI->db->get('usuarios');
+			return $consulta->row('avatar_uri');
+			break;
+	}
+
+}

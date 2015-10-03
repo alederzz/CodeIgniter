@@ -107,7 +107,7 @@
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="md md-dialpad"></i></span>
 								<div class="fg-line">
-									<input id="inputRuc" type="text" name="ruc" class="form-control input-sm" disabled>
+									<input id="inputRuc" type="text" name="ruc" class="form-control input-sm" value="<?php echo $cliente->nro_documento; ?>" disabled>
 								</div>
 							</div>
 						</div>
@@ -116,7 +116,7 @@
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="md md-place"></i></span>
 								<div class="fg-line">
-									<input id="inputDireccion" type="text" name="direccion" class="form-control input-sm" disabled>
+									<input id="inputDireccion" type="text" name="direccion" class="form-control input-sm" value="<?php echo $cliente->direccion; ?>" disabled>
 								</div>
 							</div>
 						</div>

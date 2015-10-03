@@ -11577,7 +11577,7 @@ body #content {
   height: 129px;
   margin-bottom: 5px;
   width: 100%;
-  background: url(../img/profile-menu.png) no-repeat left top;
+  background: url(../img/empresa-bg-default.png) no-repeat left top;
   background-size: 100%;
 }
 
@@ -11586,8 +11586,8 @@ body #content {
 }
 
 #sidebar .profile-menu > a .profile-pic > img {
-  width: 47px;
-  height: 47px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   border: 3px solid rgba(0, 0, 0, 0.14);
   box-sizing: content-box;
@@ -11597,7 +11597,7 @@ body #content {
   background: rgba(0, 0, 0, 0.37);
   padding: 7px 14px;
   color: #fff;
-  margin-top: 20px;
+  margin-top: 8px;
   position: relative;
 }
 

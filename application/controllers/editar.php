@@ -4,7 +4,6 @@ class Editar extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('Facturar_model');
-		$this->load->model('Inventario_model');
 	}
 
 	public function index(){
@@ -12,17 +11,17 @@ class Editar extends CI_Controller {
 		$this->session->set_flashdata("document_status",mensaje("Debes editar un documento","warning"));
 		redirect(base_url("facturar"));
 	}
-	public function documento(){
+	public function documento($id_doc){
 		if (!$this->session->userdata('login') || $this->uri->segment(3) == FALSE):
 			$this->session->set_flashdata('mensaje','Debes Iniciar Sesion');
 			redirect(base_url());
 		else:
-			//obtnemos el numero de id del documento que se quiere editar
-			//Se encuentra en el segmento 3 y lo agregamos a la varialble $nro_documento
-			$nro_documento=$this->uri->segment(3);
-			$id_factura=$this->Facturar_model->obtener_datos($nro_documento);
-			$val['valores']=$id_factura;
-			$val['items']=$this->Inventario_model->obtener_datos($id_factura->id_factura);
+			//obtenemos el numero de id del documento que se quiere editar
+			$datosfactura=$this->Facturar_model->get_data_row('facturacion','id',$id_doc);
+			$datoscliente=$this->Facturar_model->get_data_row('clientes','razon_social',$datosfactura->razon_social);
+			$val['items']=$this->Facturar_model->get_data_result('items','id_factura',$datosfactura->id_factura);
+			$val['valores']=$datosfactura;
+			$val['cliente']=$datoscliente;
 			// agregar breadcrumbs
 			$this->breadcrumbs->push('Dashboard', '/');
 			$this->breadcrumbs->push('Documentos', '/documentos');

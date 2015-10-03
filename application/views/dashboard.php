@@ -6,7 +6,6 @@
 <div class="row">
 
 	<!-- Card de Facturas -->
-
 	<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 		<div class="card z-depth-2">
 			<div class="card-header bgm-cyan">

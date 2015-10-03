@@ -4,7 +4,6 @@ class Imprimir extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('Facturar_model');
-		$this->load->model('Inventario_model');
 		$this->load->helper("numeros");
 	}
 
@@ -17,9 +16,9 @@ class Imprimir extends CI_Controller {
 		else:
 			
 			$nro_documento=$this->uri->segment(3);
-			$id_factura=$this->Facturar_model->obtener_datos($nro_documento);
+			$id_factura=$this->Facturar_model->get_data_row('facturacion','id',$nro_documento);
 			$val['valores']=$id_factura;
-			$val['items']=$this->Inventario_model->obtener_datos($id_factura->id_factura);
+			$val['items']=$this->Facturar_model->get_data_result('items','id_factura',$id_factura->id_factura);
 			
 			$this->load->view("imprimir/template_factura",$val);
 

@@ -33,17 +33,36 @@ class Facturar_model extends CI_Model{
 		$this->db->update('facturacion', $datos); 
 	}
 
-	public function obtener_datos($id){
-		$this->db->where('id', $id);
-		$consulta = $this->db->get('facturacion');
+	public function actualizar_productos($id){
+		$this->db->where('id',$id);
+		$this->db->update('items',$datos);
+	}
+	
+	//++++++++++++++++++++++++++
+	//Devulve un solo resultado
+	public function get_data_row($tabla,$campo,$valor){
+		$this->db->where($campo, $valor);
+		$consulta = $this->db->get($tabla);
 
 		if ($consulta->num_rows() > 0):
 			return $consulta->row();
 		else:
 			return false;
 		endif;
-
 	}
+
+	//Devuelve multiples resultados
+	public function get_data_result($tabla,$campo,$valor){
+		$this->db->where($campo, $valor);
+		$consulta = $this->db->get($tabla);
+
+		if ($consulta->num_rows() > 0):
+			return $consulta->result();
+		else:
+			return false;
+		endif;
+	}
+	//++++++++++++++++++++++++++
 
 	//Graba los datos de faturacion en la Base de Datos
 	public function grabar_factura($codigounico, $idcliente, $cliente, $tipodoc, $fechaEmision, $fechaCancelacion, $tipopago, $moneda, $serie, $correlativo, $precio_total, $igv){
@@ -84,5 +103,6 @@ class Facturar_model extends CI_Model{
 		$this->db->insert_batch('items',$datos);
 
 	}
+	
 }
 ?>
