@@ -154,7 +154,23 @@ class Facturar extends CI_Controller {
 			&& isset($fechaCancelacion) && !empty($fechaCancelacion) && isset($tipopago) && !empty($tipopago) && isset($moneda) && !empty($moneda) 
 			&& isset($serie) && !empty($serie) && isset($correlativo) && !empty($correlativo) && isset($precio_total) && !empty($precio_total) && isset($igv) ):
 
-				$this->Facturar_model->grabar_factura($codigounico, $idcliente, $cliente, $tipodoc, $fechaEmision, $fechaCancelacion, $tipopago, $moneda, $serie, $correlativo, $precio_total, $igv);
+				$data = array(
+					'id_factura'		=> $codigounico,
+					'id_cliente'		=> $idcliente,
+					'razon_social' 		=> $cliente,
+					'tipo_documento'	=> $tipodoc,
+					'serie'				=> $serie,
+					'correlativo' 		=> $correlativo,
+					'fecha_emision'		=> $fechaEmision,
+					'fecha_cancelacion'	=> $fechaCancelacion,
+					'tipo_pago'			=> $tipopago,
+					'moneda'			=> $moneda,
+					'monto'				=> $precio_total,
+					'estado'			=> "1",
+					'igv'				=> $igv
+					 );
+
+				$this->Facturar_model->insert_data('facturacion',$data);
 				echo "Listo, la factura se guardo<br>";
 				$this->Facturar_model->grabar_producto($codigounico,$array);
 				echo "Se guardo el Producto";

@@ -18,7 +18,7 @@ class Editar extends CI_Controller {
 		else:
 			//obtenemos el numero de id del documento que se quiere editar
 			$datosfactura=$this->Facturar_model->get_data_row('facturacion','id',$id_doc);
-			$datoscliente=$this->Facturar_model->get_data_row('clientes','razon_social',$datosfactura->razon_social);
+			$datoscliente=$this->Facturar_model->get_data_row('clientes','id',$datosfactura->id_cliente);
 			$val['items']=$this->Facturar_model->get_data_result('items','id_factura',$datosfactura->id_factura);
 			$val['valores']=$datosfactura;
 			$val['cliente']=$datoscliente;

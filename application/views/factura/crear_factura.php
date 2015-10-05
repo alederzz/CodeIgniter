@@ -35,7 +35,7 @@
 								</div>
 								<div class="col-md-9 col-xs-9">
 									<div class="fg-line">
-										<input id="inputCorrelativo" type="number" name="correlativo" class="form-control input-sm" required>
+										<input id="inputCorrelativo" type="text" name="correlativo" class="form-control input-sm" required>
 									</div>
 								</div>
 							</div>
@@ -175,6 +175,7 @@
 							<div class="row form-group">
 								<div class="input-group">
 								  <span class="input-group-addon">Subtotal</span>
+								  <input id="valorSumado" type="hidden">
 								  <input id="inputSubtotal" type="text" class="form-control" aria-describedby="subtotal">
 								</div>
 								<br/>

@@ -76,6 +76,7 @@
         <script src="<?php echo base_url();?>js/charts.js"></script>
         <script src="<?php echo base_url();?>vendors/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
         <script src="<?php echo base_url();?>sisfact.js"></script>
+        <script src="<?php echo base_url();?>productos.js"></script>
         <script src="<?php echo base_url();?>js/functions.js"></script>
         
     </body>
