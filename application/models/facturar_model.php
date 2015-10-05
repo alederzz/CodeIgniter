@@ -68,6 +68,9 @@ class Facturar_model extends CI_Model{
 		$this->db->insert($tabla,$data);
 	}
 
+	//Elimina datos en una tabla
+	public function delete_data($arraTabla,$arrayID){}
+
 	//++++++++++++++++++++++++++
 
 	/*Graba los datos de faturacion en la Base de Datos
