@@ -36,6 +36,7 @@ class Clientes extends CI_Controller {
 
 	//Genera un Json para la seccion de Autocomplete en Crear Factura
 	public function leer_clientes(){
+
 		if (!$this->session->userdata('login')):
 			$this->session->set_flashdata('mensaje','Debes Iniciar Sesion');
 			redirect(base_url());
@@ -71,6 +72,7 @@ class Clientes extends CI_Controller {
 
 
 	public function agregar(){
+		$this->load->helper('form');
 		if (!$this->session->userdata('login')):
 			$this->session->set_flashdata('mensaje','Debes Iniciar Sesion');
 			redirect(base_url());

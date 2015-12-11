@@ -1,4 +1,98 @@
-	
+<?php 
+$tipo_persona_atributos = 'id="inputTipoPersona" class="form-control input-sm"';
+$tipo_persona = array(
+		'Juridico' 		=> 'Juridico',
+		'Natural'		=> 'Natural'
+);
+
+$tipo_documento = array(
+		'id' 			=> 'inputTipoDocumento',
+		'name'			=> 'tipo_documento',
+		'placeholder' 	=> 'RUC',
+		'value' 		=> 'RUC',
+		'class' 		=> 'form-control input-sm'
+);
+
+$nro_documento = array(
+		'id' 			=> 'inputNroDocumento',
+		'name' 			=> 'nro_documento',
+		'maxlength' 	=> '11',
+		'class' 		=> 'form-control input-sm',
+		'required' 		=> 'required'
+);
+
+$tienda_atributos = 'id="inputTienda" class="form-control input-sm"';
+$tienda = array(
+		'tienda1'		=> 'Tienda 1',
+		'tienda2'		=> 'Tienda 2',
+		'global'		=> 'Global'
+);
+
+$razon_social = array(
+		'id'			=> 'inputRazonSocial',
+		'name'			=> 'razon_social',
+		'class'			=> 'form-control input-sm',
+		'required'		=> 'required'
+);
+
+$representante = array(
+		'id'			=> 'inputRepresentante',
+		'name'			=> 'representante',
+		'class'			=> 'form-control input-sm'
+);
+
+$email = array(
+		'id'			=> 'inputEmail',
+		'name'			=> 'email',
+		'class'			=> 'form-control input-sm',
+		'required'		=> 'required',
+		'type'			=> 'email'
+);
+
+$telefono = array(
+		'id'			=> 'inputTelefono',
+		'name'			=> 'telefono',
+		'class'			=> 'form-control input-sm',
+		'required'		=> 'required',
+		'placeholder'	=> '01 123 4567',
+		'maxlength'		=> '11'
+);
+
+$celular = array(
+		'id'			=> 'inputCelular',
+		'name'			=> 'celular',
+		'class'			=> 'form-control input-sm',
+		'placeholder'	=> '987 654 321',
+		'maxlength'		=> '9',
+);
+
+$direccion = array(
+		'id'			=> 'inputDireccion',
+		'name'			=> 'direccion',
+		'class'			=> 'form-control input-sm'
+);
+
+$localidad = array(
+		'id'			=> 'inputLocalidad',
+		'name'			=> 'localidad',
+		'class'			=> 'form-control input-sm',
+		'required'		=> 'required',
+		'placeholder'	=> 'Distrito - Ciudad - Provincia',
+);
+
+$enviar = array(
+		'name'			=> 'enviar',
+		'class'			=> 'btn-success btn',
+		'type'			=> 'submit',
+		'content'		=> 'Guardar'
+);
+
+$reset = array(
+		'class'			=> 'btn btn-danger',
+		'type'			=> 'reset',
+		'content'		=> 'Cancelar'
+);
+?>
 	<!-- contents -->
 	
 	<div class="row">
@@ -10,17 +104,14 @@
 			</div>
 			<div class="card-body card-padding">
 						
-				<form action="<?php echo base_url();?>clientes/agregar" method="post" class="">
+				<?php echo form_open(); ?>
 					<div class="row">
 						<div class="col-md-3">
 							<label for="inputTipoPersona">Tipo Persona</label>
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="zmdi zmdi-pin-account"></i></span>
 								<div class="fg-line select">
-										<select name="tipo_persona" id="inputTipoPersona" class="form-control input-sm">
-											<option value="juridico">Juridico</option>
-											<option value="natural">Natural</option>
-										</select>
+									<?php echo form_dropdown('tipo_persona', $tipo_persona, '', $tipo_persona_atributos);?>
 								</div>
 							</div>
 						</div>
@@ -29,7 +120,7 @@
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="zmdi zmdi-file"></i></span>
 								<div class="fg-line">
-									<input id="inputTipoDocumento" type="text" name="tipo_documento" placeholder="RUC" value="RUC" class="form-control input-sm">
+									<?php echo form_input($tipo_documento);  ?>
 								</div>
 							</div>
 						</div>
@@ -38,7 +129,7 @@
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="zmdi zmdi-dialpad"></i></span>
 								<div class="fg-line">
-									<input id="inputNroDocumento" type="text" name="nro_documento" maxlength="11" class="form-control input-sm" required>
+									<?php echo form_input($nro_documento);?>
 								</div>
 							</div>
 						</div>
@@ -47,11 +138,7 @@
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="zmdi zmdi-local-store"></i></span>
 								<div class="fg-line select">
-									<select name="tienda" id="inputTienda" class="form-control input-sm">
-										<option value="tienda1">Tienda 1</option>
-										<option value="tienda2">Tienda 2</option>
-										<option value="global">Global</option>
-									</select>
+									<?php echo form_dropdown('tienda', $tienda,'', $tienda_atributos); ?>
 								</div>
 							</div>
 						</div>
@@ -62,7 +149,7 @@
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="zmdi zmdi-receipt"></i></span>
 								<div class="fg-line">
-									<input id="inputRazonSocial" type="text" name="razon_social" class="form-control input-sm" required>
+									<?php echo form_input($razon_social); ?>
 								</div>
 							</div>
 						</div>
@@ -71,7 +158,7 @@
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
 								<div class="fg-line">
-									<input id="inputRepresentante" type="text" name="representante" class="form-control input-sm">
+									<?php echo form_input($representante); ?>
 								</div>
 							</div>
 						</div>
@@ -82,7 +169,7 @@
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
 								<div class="fg-line">
-									<input id="inputEmail" type="email" name="email" class="form-control input-sm" required>
+									<?php echo form_input($email);?>
 								</div>
 							</div>
 						</div>
@@ -91,7 +178,7 @@
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="zmdi zmdi-phone"></i></span>
 								<div class="fg-line">
-									<input id="inputTelefono" type="text" placeholder="(01) 123 4567" data-mask="(01) 000 0000" name="telefono" maxlength="9" class="form-control input-sm input-mask" required>
+									<?php echo form_input($telefono); ?>
 								</div>
 							</div>
 						</div>
@@ -100,7 +187,7 @@
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="zmdi zmdi-smartphone-android"></i></span>
 								<div class="fg-line">
-									<input id="inputCelular" type="text" placeholder="987 654 321" data-mask="000 000 000" name="celular" maxlength="9" class="form-control input-sm input-mask">
+									<?php echo form_input($celular); ?>
 								</div>
 							</div>
 						</div>
@@ -111,7 +198,7 @@
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="zmdi zmdi-pin"></i></span>
 								<div class="fg-line">
-									<input id="inputDireccion" type="text" name="direccion" class="form-control input-sm">
+									<?php echo form_input($direccion); ?>
 								</div>
 							</div>
 						</div>
@@ -120,13 +207,14 @@
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="zmdi zmdi-map"></i></span>
 								<div class="fg-line">
-									<input id="inputLocalidad" placeholder="Distrito - Ciudad - Provincia" type="text" name="localidad" class="form-control input-sm" required>
+									<?php echo form_input($localidad); ?>
 								</div>
 							</div>
 						</div>
 					</div>
-					<button type="submit" name="enviar" class="btn btn-success">Guardar</button> <button type="reset" class="btn btn-danger">Cancelar</button>
-				</form>
+					<?php echo form_button($enviar); ?>
+					<?php echo form_button($reset); ?>
+				<?php echo form_close(); ?>
 			</div>
 		</div>
 		<!-- fin de agregar clientes -->

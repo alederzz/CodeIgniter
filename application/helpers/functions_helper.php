@@ -62,16 +62,17 @@ function user_data($valor){
 
 		if ($igv == 0) {
 
+			$monto = $monto / 1.18;
 			$valIgv = $monto * 0.18;
-			$valSubtotal = $monto / 1.18;
-			$valTotal= $valSubtotal + $valIgv;
+			$valSubtotal = $monto;
+			$valTotal= $monto + $valIgv;
 
 			if ($indice == 0) {
-				return round($valSubtotal,2);
+				return number_format(round($valSubtotal,2),2);
 			}elseif ($indice == 1) {
-				return round($valIgv, 2);
+				return number_format(round($valIgv, 2),2);
 			}elseif ($indice == 2) {
-				return round($valTotal, 2);
+				return number_format(round($valTotal, 2),2);
 			}
 
 		}elseif ($igv == 1) {
@@ -81,11 +82,11 @@ function user_data($valor){
 			$valIgv = $valTotal - $valSubtotal;
 
 			if ($indice == 0) {
-				return round($valSubtotal,2);
+				return number_format(round($valSubtotal,2),2);
 			}elseif ($indice == 1) {
-				return round($valIgv, 2);
+				return number_format(round($valIgv, 2),2);
 			}elseif ($indice == 2) {
-				return round($valTotal, 2);
+				return number_format(round($valTotal, 2),2);
 			}
 
 		}

@@ -13,8 +13,6 @@
 </body>
 <?php 
 $meses=["","Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
-echo get_totals(0,531,1)."igv";
-echo get_totals(1,531,1);
 ?>
 <script>
 //CANVAS PREVIEW DOCUMENT
