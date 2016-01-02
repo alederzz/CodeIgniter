@@ -61,5 +61,17 @@ class Crud_model extends CI_Model {
 
 	//++++++++++++++++++++++++++
 
+	//Obtener el id Maximo de un campo
+	public function get_max_id($tabla, $campo){
+		$this->db->select_max($campo);
+		$consulta = $this->db->get($tabla);
+
+		if ($consulta->num_rows() > 0):
+			return $consulta->row_array();
+		else:
+			return false;
+		endif;
+	}
+
 }
 ?>

@@ -24,9 +24,9 @@ function cutString($valor, $delimitador, $indice, $array=0){
 //Usado en Controller: facturar, editar
 function mensaje($mensaje,$tipo){
 	return '<div class="alert alert-'.$tipo.' alert-dismissible" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                        '.$mensaje.'
-                    </div>';
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+               '.$mensaje.'
+            </div>';
 }
 
 function user_data($valor){

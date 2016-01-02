@@ -12,7 +12,9 @@
         <link href="<?php echo base_url();?>vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
         <link href="<?php echo base_url();?>vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.css" rel="stylesheet">
         <link href="<?php echo base_url();?>vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
-            
+        <link href="<?php echo base_url();?>vendors/bower_components/summernote/dist/summernote.css" rel="stylesheet">
+        <link href="<?php echo base_url();?>vendors/bower_components/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
         <!-- CSS -->
         <link href="<?php echo base_url();?>css/app.min.1.css" rel="stylesheet">
         <link href="<?php echo base_url();?>css/app.min.2.css" rel="stylesheet">
@@ -132,6 +134,13 @@
                                 <ul>
                                     <li><a href="colors.html">Colors</a></li>
                                     <li><a href="animations.html">Animations</a></li>
+                                </ul>
+                            </li>
+                            <li class="sub-menu">
+                                <a href=""><i class="zmdi zmdi-equalizer"></i>Proformas</a>
+                                <ul>
+                                    <li><a href="#">Proformas</a></li>
+                                    <li><?php echo anchor('proformas/nuevo', 'Crear Proforma'); ?></li>
                                 </ul>
                             </li>
                         </ul>

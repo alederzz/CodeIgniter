@@ -26,4 +26,5 @@ class Ajax extends CI_Controller {
 		//comprobamos que no se haya registrado otra factura con el mismo numero de correlativo
 		$this->Facturar_model->consultar_factura($valor);
 	}
+
 }

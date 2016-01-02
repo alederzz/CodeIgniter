@@ -44,10 +44,10 @@ $(document).on('ready',function(){
 	
 
 	//Command Buttons
-	$("#data-table-command").bootgrid({
+var gridClientes = $("#data-table-clientes").bootgrid({
 		caseSensitive: false,
 		labels: {
-		        search: "Buscar",
+		        search: "Buscar Cliente",
 		        infos: "Mostrando {{ctx.start}} a {{ctx.end}} de {{ctx.total}} elementos",
 		        all: "Todos",
 		        noResults: "No se encontraron resultados"
@@ -61,11 +61,15 @@ $(document).on('ready',function(){
 		},
 		formatters: {
 			"comandos": function(column, row) {
-				return "<button type=\"button\" class=\"btn btn-icon command-edit\" data-row-id=\"" + row.ruc + "\"><span class=\"zmdi zmdi-edit\"></span></button> " + 
+				return "<button class=\"btn btn-icon command-edit\" data-row-id=\"" + row.id + "\"><span class=\"zmdi zmdi-edit\"></span></button> " + 
 	            "<button type=\"button\" class=\"btn btn-icon command-delete\" data-row-id=\"" + row.ruc + "\"><span class=\"zmdi zmdi-delete\"></span></button> " + 
 	            "<button type=\"button\" class=\"btn btn-icon command-create\" data-row-id=\"" + row.ruc + "\"><span class=\"zmdi zmdi-check\"></span></button>";
 	          }
 	    }
+	}).on("loaded.rs.jquery.bootgrid", function(){
+		gridClientes.find('.command-edit').on('click',function(){
+			location.href="editar/cliente/"+$(this).data("row-id");
+		});
 	});
 
 	//Comandos para Tabla Documentos
@@ -189,5 +193,11 @@ var grid = $("#data-table-command-docs").bootgrid({
 			});
 		});
 	// ./ Comandos para Tabla Documentos
+
+	//Textarea de Cotizar
+	$('.note-editable').on("blur", function(){
+	      $('textarea#textContenido').html($('.html-editor').code());
+	 });
+	// ./ Textarea de Cotizar
 
  });//fin document on ready

@@ -5,6 +5,7 @@ class Editar extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Facturar_model');
 		$this->load->model('Crud_model');
+		$this->load->helper('form');
 	}
 
 	public function index(){
@@ -18,24 +19,35 @@ class Editar extends CI_Controller {
 			redirect(base_url());
 		else:
 			//obtenemos el numero de id del documento que se quiere editar
-			$datosfactura=$this->Crud_model->get_data_row('facturacion','id',$id_doc);
-			$datoscliente=$this->Crud_model->get_data_row('clientes','id',$datosfactura->id_cliente);
-			$val['items']=$this->Crud_model->get_data_result('items','id_factura',$datosfactura->id_factura);
-			$val['valores']=$datosfactura;
-			$val['cliente']=$datoscliente;
-			// agregar breadcrumbs
-			$this->breadcrumbs->push('Dashboard', '/');
-			$this->breadcrumbs->push('Documentos', '/documentos');
-			$this->breadcrumbs->push('Editar Documento', '');
-			$datos['bread']=$this->breadcrumbs->show();// salida
-
-			$segmentos_totales=$this->uri->total_segments();
-
-			$datos['segmentos']=$segmentos_totales;
+			$datosfactura	=	$this->Crud_model->get_data_row('facturacion','id',$id_doc);
+			$datoscliente	=	$this->Crud_model->get_data_row('clientes','id',$datosfactura->id_cliente);
+			$val['items']	=	$this->Crud_model->get_data_result('items','id_factura',$datosfactura->id_factura);
+			$val['valores']	=	$datosfactura;
+			$val['cliente']	=	$datoscliente;
+			
 			$datos['titulo']= "Editar Documento";
 			$this->load->view('templates/header',$datos);
 			$this->load->view('editar/editar_documento',$val);
 			$this->load->view('templates/footer');
+		endif;
+	}
+
+	public function cliente($id_cliente){
+		if (!$this->session->userdata('login') || $this->uri->segment(3) == FALSE):
+			$this->session->set_flashdata('mensaje','Debes Iniciar Sesion');
+			redirect(base_url());
+		else:
+			//obtiene la informacion del cliente en la base de datos
+			$datos['info'] 		=	$this->Crud_model->get_data_row('clientes','id',$id_cliente);
+			if ($datos['info']) {
+				$datos['titulo']	=	"Editar Cliente";
+				$this->load->view('templates/header', $datos);
+				$this->load->view('clientes/agregar', $datos);
+				$this->load->view('templates/footer');
+			}else{
+				$this->session->set_flashdata("document_status",mensaje("El Cliente no existe","danger"));
+				redirect('clientes');
+			}
 		endif;
 	}
 }

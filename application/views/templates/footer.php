@@ -26,6 +26,7 @@
 
         <script src="<?php echo base_url();?>vendors/autocomplete/jquery.autocomplete.js"></script>
         <script src="<?php echo base_url();?>vendors/autocomplete/jquery.mockjax.js"></script>
+        <script src="<?php echo base_url();?>vendors/bower_components/summernote/dist/summernote.min.js"></script>
 
         <script src="<?php echo base_url();?>js/flot-charts/curved-line-chart.js"></script>
         <script src="<?php echo base_url();?>js/flot-charts/line-chart.js"></script>

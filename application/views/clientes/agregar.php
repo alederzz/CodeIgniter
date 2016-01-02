@@ -1,4 +1,8 @@
 <?php 
+
+//Info devulve FALSO si no hay datos 
+if (!isset($info)) { $info = FALSE; }
+
 $tipo_persona_atributos = 'id="inputTipoPersona" class="form-control input-sm"';
 $tipo_persona = array(
 		'Juridico' 		=> 'Juridico',
@@ -18,6 +22,7 @@ $nro_documento = array(
 		'name' 			=> 'nro_documento',
 		'maxlength' 	=> '11',
 		'class' 		=> 'form-control input-sm',
+		'value'			=> ($info) ? $info->nro_documento : "",
 		'required' 		=> 'required'
 );
 
@@ -32,19 +37,22 @@ $razon_social = array(
 		'id'			=> 'inputRazonSocial',
 		'name'			=> 'razon_social',
 		'class'			=> 'form-control input-sm',
+		'value'			=> ($info) ? $info->razon_social:"",
 		'required'		=> 'required'
 );
 
 $representante = array(
 		'id'			=> 'inputRepresentante',
 		'name'			=> 'representante',
-		'class'			=> 'form-control input-sm'
+		'class'			=> 'form-control input-sm',
+		'value'			=> ($info) ? $info->representante:""
 );
 
 $email = array(
 		'id'			=> 'inputEmail',
 		'name'			=> 'email',
 		'class'			=> 'form-control input-sm',
+		'value'			=> ($info) ? $info->email:"",
 		'required'		=> 'required',
 		'type'			=> 'email'
 );
@@ -53,6 +61,7 @@ $telefono = array(
 		'id'			=> 'inputTelefono',
 		'name'			=> 'telefono',
 		'class'			=> 'form-control input-sm',
+		'value'			=> ($info) ? $info->telefono:"",
 		'required'		=> 'required',
 		'placeholder'	=> '01 123 4567',
 		'maxlength'		=> '11'
@@ -62,6 +71,7 @@ $celular = array(
 		'id'			=> 'inputCelular',
 		'name'			=> 'celular',
 		'class'			=> 'form-control input-sm',
+		'value'			=> ($info) ? $info->celular:"",
 		'placeholder'	=> '987 654 321',
 		'maxlength'		=> '9',
 );
@@ -69,13 +79,15 @@ $celular = array(
 $direccion = array(
 		'id'			=> 'inputDireccion',
 		'name'			=> 'direccion',
-		'class'			=> 'form-control input-sm'
+		'class'			=> 'form-control input-sm',
+		'value'			=> ($info) ? $info->direccion:""
 );
 
 $localidad = array(
 		'id'			=> 'inputLocalidad',
 		'name'			=> 'localidad',
 		'class'			=> 'form-control input-sm',
+		'value'			=> ($info) ? $info->localidad:"",
 		'required'		=> 'required',
 		'placeholder'	=> 'Distrito - Ciudad - Provincia',
 );
@@ -92,6 +104,7 @@ $reset = array(
 		'type'			=> 'reset',
 		'content'		=> 'Cancelar'
 );
+
 ?>
 	<!-- contents -->
 	
@@ -100,7 +113,7 @@ $reset = array(
 		<?php echo $this->session->flashdata('msje_datos_guardados'); ?>
 		<div class="card">
 			<div class="card-header">
-				<h2>Agregar Clientes</h2>
+				<?php echo heading($titulo, 2); ?>
 			</div>
 			<div class="card-body card-padding">
 						
@@ -111,7 +124,7 @@ $reset = array(
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="zmdi zmdi-pin-account"></i></span>
 								<div class="fg-line select">
-									<?php echo form_dropdown('tipo_persona', $tipo_persona, '', $tipo_persona_atributos);?>
+									<?php echo form_dropdown('tipo_persona', $tipo_persona, ($info)?$info->tipo_persona:"", $tipo_persona_atributos);?>
 								</div>
 							</div>
 						</div>
@@ -138,7 +151,7 @@ $reset = array(
 							<div class="input-group form-group">
 								<span class="input-group-addon"><i class="zmdi zmdi-local-store"></i></span>
 								<div class="fg-line select">
-									<?php echo form_dropdown('tienda', $tienda,'', $tienda_atributos); ?>
+									<?php echo form_dropdown('tienda', $tienda,($info) ? $info->tienda:"", $tienda_atributos); ?>
 								</div>
 							</div>
 						</div>

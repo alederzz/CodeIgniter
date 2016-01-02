@@ -13,18 +13,6 @@ class Clientes extends CI_Controller {
 			redirect(base_url());
 		else:
 
-
-			// agregar breadcrumbs
-			$this->breadcrumbs->push('Dashboard', '/');
-			$this->breadcrumbs->push('Lista de Clientes', '/clientes');
-			$datos['bread']=$this->breadcrumbs->show();// salida
-			//./ agregar breadcrumbs
-
-
-			$segmentos_totales=$this->uri->total_segments();
-
-
-			$datos['segmentos']=$segmentos_totales;
 			$datos['clientes'] = $this->Crud_model->get_data("clientes");
 			$datos['titulo'] = 'Lista de Clientes';
 			$this->load->view('templates/header',$datos);
@@ -48,7 +36,7 @@ class Clientes extends CI_Controller {
 			$clientes = array(); //creamos un array
 
 			foreach($data as $columna) { 
-				$id=$columna->id;
+				$id	=	$columna->id;
 			   $razon=$columna->razon_social;
 			   $documento=$columna->nro_documento;
 			   $direccion=$columna->direccion;
@@ -68,26 +56,13 @@ class Clientes extends CI_Controller {
 
 	}
 
-
-
-
+	//Pagina para Ingresar Clientes
 	public function agregar(){
 		$this->load->helper('form');
 		if (!$this->session->userdata('login')):
 			$this->session->set_flashdata('mensaje','Debes Iniciar Sesion');
 			redirect(base_url());
 		else:
-			// agregar breadcrumbs
-			$this->breadcrumbs->push('Dashboard', '/');
-			$this->breadcrumbs->push('Lista de Clientes', '/clientes');
-			$this->breadcrumbs->push('Agregar Clientes', '/clientes/agregar');
-
-			// salida
-			$datos['bread']=$this->breadcrumbs->show();
-
-			//Metodo para identificar el total de Segmentos
-			$segmentos_totales=$this->uri->total_segments();
-			$datos['segmentos']=$segmentos_totales;
 
 			$datos['titulo'] = 'Agregar Clientes';
 			$this->load->view('templates/header',$datos);
@@ -139,7 +114,6 @@ class Clientes extends CI_Controller {
 
 			}
 		endif;
-
 	}
 
 }

@@ -32,8 +32,6 @@
 			</ul>             
 	</div>
 	<!-- ./ Titulo y botones superiores -->
-
-	
 	<!-- contents -->
 	
 		<!-- fin de agregar clientes -->
@@ -42,9 +40,10 @@
 				<h2>Lista de Clientes</h2>
 			</div>
 			<div class="table-responsive">
-				<table id="data-table-command" class="table table-striped table-vmiddle">
+				<table id="data-table-clientes" class="table table-striped table-vmiddle">
 					<thead>
 						<tr>
+							<th data-column-id="id" data-visible="false">ID</th>
 							<th data-column-id="tpersona" data-visible="false">Tipo Persona</th>
 							<th data-column-id="ruc">RUC</th>
 							<th data-column-id="rsocial">Razon Social</th>
@@ -58,6 +57,7 @@
 					<tbody>
 					<?php foreach ($clientes as $columna): ?>
 						<tr>
+							<td><?php echo $columna->id; ?></td>
 							<td><?php echo $columna->tipo_persona; ?></td>
 							<td><?php echo $columna->nro_documento; ?></td>
 							<td><?php echo $columna->razon_social; ?></td>
