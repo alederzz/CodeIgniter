@@ -48,9 +48,9 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = '';
+$db['default']['hostname'] = 'us-cdbr-iron-east-03.cleardb.net';
+$db['default']['username'] = 'bb772eb57fd41c';
+$db['default']['password'] = '1be5386f';
 $db['default']['database'] = 'ci_database';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
