@@ -194,10 +194,4 @@ var grid = $("#data-table-command-docs").bootgrid({
 		});
 	// ./ Comandos para Tabla Documentos
 
-	//Textarea de Cotizar
-	$('.note-editable').on("blur", function(){
-	      $('textarea#textContenido').html($('.html-editor').code());
-	 });
-	// ./ Textarea de Cotizar
-
  });//fin document on ready

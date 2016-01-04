@@ -13,7 +13,6 @@
         <link href="<?php echo base_url();?>vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.css" rel="stylesheet">
         <link href="<?php echo base_url();?>vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
         <link href="<?php echo base_url();?>vendors/bower_components/summernote/dist/summernote.css" rel="stylesheet">
-        <link href="<?php echo base_url();?>vendors/bower_components/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 
         <!-- CSS -->
         <link href="<?php echo base_url();?>css/app.min.1.css" rel="stylesheet">

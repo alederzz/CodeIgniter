@@ -18,9 +18,6 @@
 .autocomplete-group strong { font-weight: bold; font-size: 16px; color: #000; display: block; border-bottom: 1px solid #000; }
 
 /**/
-/*textarea#contenido {display: none;}*/
-
-/**/
 
 @media (min-width: 1200px){
 	.modal-lg{width: 1150px;}

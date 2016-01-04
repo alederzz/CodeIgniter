@@ -6,7 +6,7 @@ $form_atributos	= array(
 $fecha = array(
 	'id'			=> 'inputFecha',
 	'name'			=> 'fecha',
-	'class'			=> 'form-control date-picker',
+	'class'			=> 'form-control',
 	'placeholder'	=> 'Seleccione la Fecha'
 );
 
@@ -95,7 +95,7 @@ $btn_guardar = array(
 		<div class="form-group">
 			<label for="<?php echo $fecha['id'];?>" class="col-md-3 control-label">Seleccione la fecha:</label>
 			<div class="col-md-9">
-				<div class="dtp-container fg-line">
+				<div class="fg-line">
 					<?php echo form_input($fecha);?>	
 				</div>
 			</div>

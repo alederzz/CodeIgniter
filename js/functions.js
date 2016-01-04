@@ -468,16 +468,7 @@ $(document).ready(function(){
      */
     if ($('.html-editor')[0]) {
 	   $('.html-editor').summernote({
-            height: 300,
-            toolbar: [
-                ['style', ['bold', 'italic', 'underline', 'clear']],
-                ['font', ['strikethrough']],
-                ['fontsize', ['fontsize']],
-                ['insert', ['link']],
-                ['color', ['color']],
-                ['para', ['style','ul', 'ol', 'paragraph']],
-                ['height', ['height']],
-              ]
+            height: 150
         });
     }
     
